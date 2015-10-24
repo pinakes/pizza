@@ -1,10 +1,18 @@
+/*General*/
+body {
+	font-family: 'Lato', helvetica, sans-serif;
+}
+h1, h2, h3, h4 { font-weight: 700; }
+p {	font-weight: 400; }
+.light { font-weight: 300; }
+
+
 .bar {
-	font-size: 1em;
+	font-size: 0.6em;
 	text-align: right;
-	font-family: sans-serif;
-	line-height: 2em;
+	line-height: 1.5em;
 	padding-right: 0.25em;
 	margin-bottom: 1px;
 	background-color: #222;
-	color: #f4f4f4;
+	color: #fff;
 }

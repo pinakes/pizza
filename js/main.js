@@ -8,7 +8,7 @@ function draw(data) {
 		.enter()
 		.append("div")
 			.attr("class", "bar")
-			.style("width", function(d) {return d.beers * 50 + "px"})
+			.style("width", function(d) {return d.beers * 50 + 8 + "px"})
 			.text(function(d) { return d.beers });
 }
 
