@@ -1,13 +1,22 @@
 /*General*/
 body {
-	font-family: 'Lato', helvetica, sans-serif;
+	font-family: Garamond, Georgia, serif;
 }
 h1, h2, h3, h4 { font-weight: 700; }
 p {	font-weight: 400; }
 .light { font-weight: 300; }
 
-
-.bar {
+svg {
+}
+svg text {
+	font-family: Menlo, monospace;
+	font-size: 11px;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+/*.bar {
 	font-size: 0.6em;
 	text-align: right;
 	line-height: 1.5em;
@@ -15,4 +24,21 @@ p {	font-weight: 400; }
 	margin-bottom: 1px;
 	background-color: #222;
 	color: #fff;
+}*/
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.y.axis path {
+  display: none;
+}
+
+.y.axis line {
+  stroke: #777;
+  stroke-dasharray: 2,2;
+  z-index: -1;
 }
