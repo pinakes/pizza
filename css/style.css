@@ -52,11 +52,11 @@ svg text {
   shape-rendering: crispEdges;
 }
 
-.y.axis path {
+.x.axis path {
   display: none;
 }
 
-.y.axis line {
+.x.axis line {
   stroke: #777;
   stroke-dasharray: 2,2;
   z-index: -1;
