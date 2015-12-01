@@ -2,7 +2,26 @@
 body {
 	font-family: Garamond, Georgia, serif;
 }
+
+@font-face {
+    font-family: 'geomanist-ultra';
+    src: url('../fonts/geomanist-black-webfont.eot');
+    src: url('../fonts/geomanist-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/geomanist-black-webfont.woff2') format('woff2'),
+         url('../fonts/geomanist-black-webfont.woff') format('woff'),
+         url('../fonts/geomanist-black-webfont.ttf') format('truetype'),
+         url('../fonts/geomanist-black-webfont.svg#rectaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1, h2, h3, h4 { font-weight: 700; }
+h1 { 
+	font-family: "geomanist-ultra", Helvetica, arial, sans-serif; 
+	font-size: 3.7em;
+	margin: 0;
+	text-transform: uppercase;
+}
 p {	font-weight: 400; }
 .light { font-weight: 300; }
 
