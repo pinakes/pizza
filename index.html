@@ -9,14 +9,35 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,700,400italic' rel='stylesheet' type='text/css'>
 		<!--<script type="text/javascript" src="js/d3.js"></script>-->
-		<script src="//d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<h1 class="light">A Year of Pizza</h1>
+			<section id="spiega">
 			<p>In my 33th year I'd like to track some good things. <br>Yes, it's an academic exercise just and opportunity to build something in d3.js and google spreadsheets.</p>
-			<svg id="chart"></svg>
+			</section>
+
+			<section class="timeline">
+			<h3>the timeline</h3>
+			<p>Write something here about this graph.</p>
+			<svg id="timeline" class="chart"></svg>
+			</section>
+
+			<section class="type">
+			<h3>Popular Type</h3>
+			<p>Write something here about this graph.</p>
+			<div id="type" class="chart"></div>
+			</section>
+
+			<section class="location">
+			<h3>Popular Location</h3>
+			<p>Write something here about this graph.</p>
+			<svg id="location" class="chart"></svg>
+			</section>
 		</div>
 	</body>
 </html>
