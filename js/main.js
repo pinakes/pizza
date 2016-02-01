@@ -1,4 +1,8 @@
 
+// Settings
+var key = "1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ",  // key for demo spreadsheet
+    query = "&tqx=out:csv",                       // query returns the first sheet as CSV
+    csvUrl = "https://spreadsheets.google.com/tq?key=" + key + query;  // CORS-enabled server
 
 // Timeline
 var margin = {top: 50, right: 0, bottom: 50, left: 0},
@@ -36,7 +40,7 @@ var TypWidth = 480 - margin.left - margin.right
 var xTyp = d3.scale.linear()
     .range([0, TypWidth]);
 
-d3.csv('http://docs.google.com/spreadsheet/pub?key=1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ&single=true&output=csv', function(error, data) {
+d3.csv(csvUrl, function(error, data) {
 	data.forEach(function(d) {
         d.date = parseDate(d.date);
     });
@@ -73,7 +77,7 @@ d3.csv('http://docs.google.com/spreadsheet/pub?key=1JL9GyvZk0Nkkku0mu92uOEDXm9X7
         	tooltip.html(d.name + "<br/><hr><i>" + d.location + "<br/>" + toolTipDate(d.date) +"</i>")
                .style({
                		"min-width": "120px",
-	               	"left": (d3.event.target.cx.animVal.value) + "px",
+	               	"left": (d3.event.pageX) + "px",
 	               	"top": (d3.event.pageY - 100) + "px"
                })
 	    })

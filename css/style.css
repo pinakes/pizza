@@ -28,6 +28,21 @@ hr {
 	border: none;
 	border-bottom: 1px solid black;
 }
+.hero {
+	display: inline-block;
+	padding: 8em 0;
+}
+.titolo, .compo	{
+	width: 50%;
+	float: left;
+}
+.titolo {
+	margin: 3.5em 0;
+}
+.compo img { 
+	float: right;
+	width: 90%; 
+}
 
 .light { font-weight: 300; }
 
