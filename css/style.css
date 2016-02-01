@@ -49,7 +49,7 @@ hr {
 svg {
 }
 svg text, .chart {
-	font-family: Menlo, monospace;
+	/*font-family: Menlo, monospace;*/
 	font-size: 11px;
 }
 .container {

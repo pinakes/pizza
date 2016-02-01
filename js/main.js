@@ -14,7 +14,7 @@ var parseDate = d3.time.format("%d-%m-%Y").parse;
 var yTml = d3.scale.ordinal().rangeRoundBands([height, 0]);
 
 var xTml = d3.time.scale()
-    .domain([new Date(2015, 10, 15), new Date(2016, 10, 15)])
+    .domain([new Date(2015, 9, 15), new Date(2016, 11, 15)])
     .range([0, width]);
 
 var xAxis = d3.svg.axis()
@@ -65,11 +65,19 @@ d3.csv(csvUrl, function(error, data) {
 	var toolTipDate = d3.time.format("%a, %d %b");
 	timeline.selectAll(".pizza")
 		.data(data)
-		.enter().append("circle")
+		.enter()
+		/*
+		.append("circle")
 		.attr("class", "pizza")
 		.attr("r", function(d) { return d.vote * 3; })
 		.attr("cx", function(d) { return xTml(d.date); })
-		.attr("cy", function(d) { return yTml(d.type); })
+		.attr("cy", function(d) { return yTml(d.type); })*/
+		.append("svg:image")
+		.attr("x", function(d) { return xTml(d.date) - 20; })
+		.attr("y", function(d) { return yTml(d.type) - 20; })
+		.attr('width', 40)
+   		.attr('height', 40)
+   		.attr("xlink:href","images/pizza.png")
 		.on("mouseover", function(d) {
         	tooltip.transition()
                .duration(200)
