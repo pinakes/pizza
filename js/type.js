@@ -9,33 +9,96 @@ function type(data, tooltip) {
 		return prev;
 	}, {});
 
-	var typeData = [];
+	var indexedByName = data.reduce(function (prev, curr) {
+		if (prev[curr.name]) {
+	    	prev[curr.name] += 1;
+		} else {
+	    	prev[curr.name] = 1;
+		}
+		return prev;
+	}, {});
+
+	var typeDataType = [];
+	var typeDataName = [];
 
 	for (var label in indexedByType) {
-	  typeData.push({label: label, value: indexedByType[label]});
+	  typeDataType.push({label: label, value: indexedByType[label]});
 	}
 
-  	xTyp.domain([0, d3.max(typeData, function(d) { return d.value; })]);
+	for (var name in indexedByName) {
+	  typeDataName.push({label: name, value: indexedByName[name]});
+	}
 
-	var pizzaType = d3.select("#type")
+  	xTyp.domain([0, d3.max(typeDataType, function(d) { return d.value; })]);
+  	xNme.domain([0, d3.max(typeDataName, function(d) { return d.value; })]);
+
+  	console.log(typeDataName)
+
+	var pizzaTypes = d3.select("#type")
 		.style({
-			"width": TypWidth + margin.left + margin.right + "px",
-			"height": typeData.length * 19 + "px"
+			"width": halfWidth + margin.left + margin.right + "px",
+			"height": typeDataType.length * 30 + "px"
 		})
+	var pizzaType = d3.selectAll(".pizzaTypes")
 
-	pizzaType.selectAll(".pizzaType")
-		.data(typeData)
+	pizzaTypes.selectAll(".pizzaTypes")
+		.data(typeDataType)
 		.enter().append("div")
+		.attr("class", "pizzaTypes")
+
+	d3.selectAll(".pizzaTypes")
+		.append("text")
+		.attr("class", "pizzaTypeText")
+		.text(function(d) { return d.label; })
+
+	d3.selectAll(".pizzaTypes")
+		.append("text")
+		.attr("class", "pizzaTypeValue")
+		.text(function(d) { return d.value; })
+
+	d3.selectAll(".pizzaTypes")
+		.append("div")
 		.attr("class", "pizzaType")
 		.style({
-			"height": "18px",
-			"width": function(d) { return xTyp(d.value) + "px"; }
+			"height": "4px",
+			"width": function(d) { return xTyp(d.value) - 6 + "px"; }
 		})
-		.attr("y", function (d, i) {
-            return i * 19;
-        })
+
+
+	var pizzaPlaces = d3.select("#place")
+		.style({
+			"width": halfWidth + margin.left + margin.right + "px",
+			"height": typeDataName.length * 30 + "px"
+		})
+	var pizzaPlace = d3.selectAll(".pizzaPlaces")
+
+	pizzaPlaces.selectAll(".pizzaPlaces")
+		.data(typeDataName)
+		.enter().append("div")
+		.attr("class", "pizzaPlaces")
+
+	d3.selectAll(".pizzaPlaces")
+		.append("text")
+		.attr("class", "pizzaPlaceText")
+		.text(function(d) { return d.label; })
+
+	d3.selectAll(".pizzaPlaces")
+		.append("text")
+		.attr("class", "pizzaTypeValue")
 		.text(function(d) { return d.value; })
-		.on("mouseover", function(d) {
+
+	d3.selectAll(".pizzaPlaces")
+		.append("div")
+		.attr("class", "pizzaPlace")
+		.style({
+			"height": "4px",
+			"width": function(d) { return xNme(d.value) - 6 + "px"; }
+		})
+
+
+
+
+		/*.on("mouseover", function(d) {
         	tooltip.transition()
             	.duration(200)
             	.style("opacity", .9);
@@ -49,5 +112,5 @@ function type(data, tooltip) {
          	tooltip.transition()
                .duration(500)
                .style("opacity", 0);
-      	});
+      	});*/
 }

@@ -35,10 +35,13 @@ function customAxis(g) {
 }
 
 // Type
-var TypWidth = 480 - margin.left - margin.right
+var halfWidth = 440
 
 var xTyp = d3.scale.linear()
-    .range([0, TypWidth]);
+    .range([0, halfWidth]);
+
+var xNme = d3.scale.linear()
+    .range([0, halfWidth]);
 
 d3.csv(csvUrl, function(error, data) {
 	data.forEach(function(d) {

@@ -53,7 +53,7 @@ h4.bigAndLight small {
 	font-size: 16px;
 }
 h5 { margin: 0; }
-p {	font-weight: 400; margin: 0.5em 0 }
+p {	font-weight: 400; margin: 0.5em 0; line-height: 1.3em; }
 section { padding-top: 1em; }
 hr { 
 	border: none;
@@ -97,13 +97,26 @@ svg text, .chart {
 	width: 960px;
 	margin: 0 auto;
 }
-.pizzaType {
-	text-align: right;
-	line-height: 19px;
+.popular p {
+	padding-right: 35px;
+}
+.pizzaTypes, .pizzaPlaces {
+	position: relative;
+    border-bottom: 1px solid #DDCEA0;
+    margin-bottom: 6px;
+}
+.pizzaTypes text, .pizzaPlaces text {
+	font-size: 14px;
+	line-height: 20px;
+}
+.pizzaTypes text.pizzaTypeValue, .pizzaPlaces text.pizzaTypeValue {
+	position: absolute;
+	right: 10px;
+}
+.pizzaType, .pizzaPlace {
 	padding-right: 0.5em;
-	margin-bottom: 1px;
 	background-color: #F80404;
-	color: #fff;
+	color: #000;
 }
 .pizzaVote {
 	pointer-events: none;
