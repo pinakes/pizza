@@ -14,7 +14,7 @@ var parseDate = d3.time.format("%d-%m-%Y").parse;
 var yTml = d3.scale.ordinal().rangeRoundBands([height, 0]);
 
 var xTml = d3.time.scale()
-    .domain([new Date(2015, 10, 15), new Date(2016, 10, 15)])
+    .domain([new Date(2015, 10, 1), new Date(2016, 10, 15)])
     .range([0, width]);
 
 var xAxis = d3.svg.axis()
@@ -44,112 +44,20 @@ d3.csv(csvUrl, function(error, data) {
 	data.forEach(function(d) {
         d.date = parseDate(d.date);
     });
+    // add the tooltip area to the webpage
+	var tooltip = d3.select("body").append("div")
+	    .attr("class", "tooltip")
+	    .style("opacity", 0);
 
 	console.log(data);
 
 	// Timeline
+	timeline(data, tooltip);
 
-	// add the tooltip area to the webpage
-	var tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
-	yTml.domain(data.map(function(d) { return d.type; }))
-
-	var timeline = d3.select("#timeline")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	var toolTipDate = d3.time.format("%a, %d %b");
-	timeline.selectAll(".pizza")
-		.data(data)
-		.enter().append("circle")
-		.attr("class", "pizza")
-		.attr("r", function(d) { return d.vote * 3; })
-		.attr("cx", function(d) { return xTml(d.date); })
-		.attr("cy", function(d) { return yTml(d.type); })
-		.on("mouseover", function(d) {
-        	tooltip.transition()
-               .duration(200)
-               .style("opacity", .9);
-        	tooltip.html(d.name + "<br/><hr><i>" + d.location + "<br/>" + toolTipDate(d.date) +"</i>")
-               .style({
-               		"min-width": "120px",
-	               	"left": (d3.event.pageX) + "px",
-	               	"top": (d3.event.pageY - 100) + "px"
-               })
-	    })
-      	.on("mouseout", function(d) {
-         	tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
-      	});
-
-	var gy = timeline.append("g")
-	    .attr("class", "y axis")
-	    .call(yAxis)
-	    .call(customAxis);
-
-	var gx = timeline.append("g")
-	    .attr("class", "x axis")
-	    .attr("transform", "translate(0," + height + ")")
-	    .call(xAxis);
-
+	// Quantity
+	quantity(data);
 
 	// Type
-
-	var indexedByType = data.reduce(function (prev, curr) {
-		if (prev[curr.type]) {
-	    	prev[curr.type] += 1;
-		} else {
-	    	prev[curr.type] = 1;
-		}
-		return prev;
-	}, {});
-
-	var typeData = [];
-
-	for (var label in indexedByType) {
-	  typeData.push({label: label, value: indexedByType[label]});
-	}
-
-	console.log(typeData.length);
-
-  	xTyp.domain([0, d3.max(typeData, function(d) { return d.value; })]);
-
-	var pizzaType = d3.select("#type")
-		.style({
-			"width": TypWidth + margin.left + margin.right + "px",
-			"height": typeData.length * 19 + "px"
-		})
-
-	pizzaType.selectAll(".pizzaType")
-		.data(typeData)
-		.enter().append("div")
-		.attr("class", "pizzaType")
-		.style({
-			"height": "18px",
-			"width": function(d) { return xTyp(d.value) + "px"; }
-		})
-		.attr("y", function (d, i) {
-            return i * 19;
-        })
-		.text(function(d) { return d.value; })
-		.on("mouseover", function(d) {
-        	tooltip.transition()
-            	.duration(200)
-            	.style("opacity", .9);
-        	tooltip.html(d.label)
-            	.style({
-	               	"left": (xTyp(d.value)) + 42 + "px",
-	               	"top": (d3.event.pageY - 42) + "px"
-               	})
-	    })
-      	.on("mouseout", function(d) {
-         	tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
-      	});
+	type(data, tooltip);
+	
 });

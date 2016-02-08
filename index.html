@@ -13,6 +13,9 @@
 		<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/timeline.js"></script>
+		<script type="text/javascript" src="js/type.js"></script>
+		<script type="text/javascript" src="js/quantity.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -20,6 +23,9 @@
 				<div class="titolo">
 					<h1 class="light">A Year of Pizza</h1>
 					<div id="spiega"><p>In my 33th year I'd like to track some good things. <br>Yes, it's an academic exercise just and opportunity to build something in d3.js and google spreadsheets.</p>
+					<hr>
+					<h5>Total number of Pizza so far</h5>
+					<h4 class="bigAndLight">15</h4>
 					</div>
 				</div>
 				<div class="compo">
@@ -27,16 +33,63 @@
 				</div>
 			</section>
 
-			<section class="timeline">
-			<h3>the timeline</h3>
-			<p>Write something here about this graph.</p>
-			<svg id="timeline" class="chart"></svg>
+			<section class="ingredients">
+			<h3>Total Ingredients</h3>
+			<div class="row">
+				<div class="col four">
+					<img src="/images/oil.png">
+					<div>
+						<h5>Oil</h5>
+						<h4 id="oil" class="bigAndLight"></h4>
+						<p>15ml x 1 pizza</p>
+					</div>
+				</div>
+				<div class="col four">
+					<img src="/images/flour.png">
+					<div>
+						<h5>Flour</h5>
+						<h4 id="flour" class="bigAndLight"></h4>
+						<p>200g x 1 pizza</p>
+					</div>
+				</div>
+				<div class="col four">
+					<img src="/images/water.png">
+					<div>
+						<h5>Water</h5>
+						<h4 id="water" class="bigAndLight"></h4>
+						<p>150ml x 1 pizza</p>
+					</div>
+				</div>
+				<div class="col four">
+					<img src="/images/yeast.png">
+					<div>
+						<h5>Yeast</h5>
+						<h4 id="yeast" class="bigAndLight"></h4>
+						<p>1.75g x 1 pizza</p>
+					</div>
+				</div>
+			</div>
 			</section>
 
-			<section class="type">
-			<h3>Popular Type</h3>
-			<p>Write something here about this graph.</p>
-			<div id="type" class="chart"></div>
+			<section class="timeline">
+			<h3>When, Where and Which type</h3>
+			<h5>Timeline</h5>
+			<svg id="timeline" class="chart"></svg>
+						
+			<div class="row">
+				<div class="col two">
+					<h5>Popular Type</h5>
+					<h4 class="bigAndLight">Napoletana</h4>
+					<div id="type" class="chart"></div>
+					<p>Write something here about this graph.</p>
+				</div>
+				<div class="col two">
+					<h5>Popular Place</h5>
+					<h4 class="bigAndLight">Napoletana</h4>
+					<div id="place" class="chart"></div>
+					<p>Write something here about this graph.</p>
+				</div>
+			</div>
 			</section>
 
 			<section class="location">

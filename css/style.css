@@ -1,6 +1,7 @@
 /*General*/
 body {
 	font-family: Garamond, Georgia, serif;
+	background: #FFFFF7;
 }
 
 @font-face {
@@ -15,29 +16,71 @@ body {
     font-style: normal;
 }
 
-h1, h2, h3, h4, h5 { font-family: "geomanist-black", Helvetica, arial, sans-serif; text-transform: uppercase;}
+@font-face {
+    font-family: 'geomanist-light';
+    src: url('../fonts/geomanist-light-webfont.eot');
+    src: url('../fonts/geomanist-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/geomanist-light-webfont.woff2') format('woff2'),
+         url('../fonts/geomanist-light-webfont.woff') format('woff'),
+         url('../fonts/geomanist-light-webfont.ttf') format('truetype'),
+         url('../fonts/geomanist-light-webfont.svg#rectaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, h2, h5 { font-family: "geomanist-black", Helvetica, arial, sans-serif; text-transform: uppercase;}
 h1 {  
 	font-size: 3.7em;
 	margin: 0;
 }
-h3 { margin: 1em 0 0.1em 0; }
+h3 { 
+	border-bottom: 1px solid #DDCEA0;
+    line-height: 1.5em;
+    font-size: 2.5em;
+    font-weight: 100;
+}
+h4.bigAndLight { 
+	font-family: "geomanist-light", Helvetica, arial, sans-serif; 
+	text-transform: capitalize;
+	font-size: 3.5em;
+	font-weight: 100;
+	margin: 0.2em 0;
+	color: #F80404;
+}
+h4.bigAndLight small {
+	font-family: Garamond, Georgia, serif;
+	text-transform: lowercase;
+	font-size: 16px;
+}
 h5 { margin: 0; }
 p {	font-weight: 400; margin: 0.5em 0 }
 section { padding-top: 1em; }
 hr { 
 	border: none;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #DDCEA0;
 }
+.row {
+	display: inline-block;
+	width: 100%;
+}
+.row .col {
+	float: left;
+}
+.row .col.two { width: 50%; }
+.row .col.four { width: 25%; }
 .hero {
 	display: inline-block;
 	padding: 8em 0;
+}
+.hero h4 {
+	margin: 0;
 }
 .titolo, .compo	{
 	width: 50%;
 	float: left;
 }
 .titolo {
-	margin: 3.5em 0;
+	margin: 1.5em 0;
 }
 .compo img { 
 	float: right;
@@ -46,11 +89,9 @@ hr {
 
 .light { font-weight: 300; }
 
-svg {
-}
 svg text, .chart {
-	font-family: Menlo, monospace;
-	font-size: 11px;
+	/*font-family: Menlo, monospace;*/
+	font-size: 12px;
 }
 .container {
 	width: 960px;
@@ -64,6 +105,10 @@ svg text, .chart {
 	background-color: #F80404;
 	color: #fff;
 }
+.pizzaVote {
+	pointer-events: none;
+	color: #fff;
+}
 .pizzaType:hover {
 	cursor: pointer;
 	background-color: #FF9393;
@@ -71,7 +116,7 @@ svg text, .chart {
 .pizza {
 	fill: #F80404;
 	stroke: #F1D622;
-	stroke-width: 3;
+	stroke-width: 1;
 }
 .pizza:hover {
 	cursor: pointer;
@@ -105,4 +150,23 @@ svg text, .chart {
 }
 .tooltip hr {
 	border-bottom: 1px solid white;
+}
+.ingredients .row .col img {
+    width: 40%;
+    float: left;
+}
+.ingredients .row .col h5 {
+    clear: both;
+    margin-bottom: 8px;
+}
+.ingredients .row .col div {
+	float: left;
+    margin-left: 12px;
+}
+.ingredients .row .col p {
+	margin: 0
+}
+.ingredients .row .col .bigAndLight {
+    margin: 0;
+    line-height: 42px;
 }
