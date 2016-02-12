@@ -21,7 +21,7 @@ function timeline(data, tooltip) {
         	tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-        	tooltip.html(d.name + "<br/><hr><i>" + d.location + "<br/>" + toolTipDate(d.date) +"<br/>" + d.vote + " stars</i>")
+        	tooltip.html(d.name + "<br/><hr><i>" + d.city + "<br/>" + toolTipDate(d.date) +"<br/>" + d.vote + " stars</i>")
                .style({
                		"min-width": "120px",
 	               	"left": (d3.event.pageX) + "px",

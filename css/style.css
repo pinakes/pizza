@@ -129,7 +129,7 @@ svg text, .chart {
 .pizza {
 	fill: #F80404;
 	stroke: #F1D622;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 .pizza:hover {
 	cursor: pointer;
@@ -182,4 +182,13 @@ svg text, .chart {
 .ingredients .row .col .bigAndLight {
     margin: 0;
     line-height: 42px;
+}
+
+/* map */
+.boundary {
+	fill: none;
+	stroke: #fff;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	vector-effect: non-scaling-stroke;
 }

@@ -54,6 +54,9 @@ d3.csv(csvUrl, function(error, data) {
 
 	console.log(data);
 
+    //Pizza Counter
+    d3.select(".totPizza").text(data.length)
+
 	// Timeline
 	timeline(data, tooltip);
 
