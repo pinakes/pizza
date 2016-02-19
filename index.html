@@ -1,17 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>33th year</title>
+		<title>A Year of Pizza</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<link rel="stylesheet" type="text/css" href="/css/style.css" />
-		<script type="text/javascript" src="js/d3.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,700,400italic' rel='stylesheet' type='text/css'>
+		<!--<script type="text/javascript" src="js/d3.js"></script>-->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+		<script src="http://d3js.org/topojson.v0.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/timeline.js"></script>
+		<script type="text/javascript" src="js/type.js"></script>
+		<script type="text/javascript" src="js/quantity.js"></script>
 	</head>
 	<body>
-		<h1>Ciao Mondo</h1>
-		
+		<div class="container">
+			<section class="hero">
+				<div class="titolo">
+					<h1 class="light">A Year of Pizza</h1>
+					<div id="spiega"><p>In my 33th year I'd like to track some good things. <br>Yes, it's an academic exercise just and opportunity to build something in d3.js and google spreadsheets.</p>
+					<hr>
+					<h5>Total number of Pizza so far</h5>
+					<h4 class="bigAndLight totPizza"></h4>
+					</div>
+				</div>
+				<div class="compo">
+					<img src="images/compo-pizza.png">
+				</div>
+			</section>
+
+			<section class="ingredients">
+			<h3>Total Ingredients</h3>
+			<div class="row">
+				<div class="col four">
+					<img src="images/oil.png">
+					<div>
+						<h5>Oil</h5>
+						<h4 id="oil" class="bigAndLight"></h4>
+						<p>15ml x 1 pizza</p>
+					</div>
+				</div>
+				<div class="col four">
+					<img src="images/flour.png">
+					<div>
+						<h5>Flour</h5>
+						<h4 id="flour" class="bigAndLight"></h4>
+						<p>200g x 1 pizza</p>
+					</div>
+				</div>
+				<div class="col four">
+					<img src="images/water.png">
+					<div>
+						<h5>Water</h5>
+						<h4 id="water" class="bigAndLight"></h4>
+						<p>150ml x 1 pizza</p>
+					</div>
+				</div>
+				<div class="col four">
+					<img src="images/yeast.png">
+					<div>
+						<h5>Yeast</h5>
+						<h4 id="yeast" class="bigAndLight"></h4>
+						<p>1.75g x 1 pizza</p>
+					</div>
+				</div>
+			</div>
+			</section>
+
+			<section class="timeline">
+			<h3>When, Where and Which type</h3>
+			<h5>Timeline</h5>
+			<svg id="timeline" class="chart"></svg>
+						
+			<div class="row">
+				<div class="col two popular">
+					<h5>Popular Type</h5>
+					<div id="type" class="chart"></div>
+					<h4 class="bigAndLight">Napoletana</h4>
+					<p style="margin: 1.5em 0">The genuine Neapolitan pizza dough consists of wheat flour (type 0 or 00, or a mixture of both), natural Neapolitan yeast or brewer's yeast, salt and water. For proper results, strong flour with high protein content (as used for bread-making rather than cakes) must be used. The dough must be kneaded by hand or with a low-speed mixer. After the rising process, the dough must be formed by hand without the help of a rolling pin or other machine, and may be no more than 3 millimeters (0.12 in) thick</p>
+				</div>
+				<div class="col two">
+					<h5>Popular Place</h5>
+					<div id="place" class="chart"></div>
+				</div>
+			</div>
+			</section>
+
+			<section class="location">
+			<h3>Locations</h3>
+			<svg id="location" class="chart"></svg>
+			</section>
+		</div>
+		<script type="text/javascript">
+			var mapWidth = 960;
+			var mapHeight = 450;
+
+			var projection = d3.geo.mercator()
+			    .scale(250)
+			    .translate([mapWidth / 1.6, mapHeight / 1.5])
+			    .precision(.5);
+
+			var marks = [{long: -74, lat: 40.7}, {long: 12.2, lat: 45.4}, {long: 12.5, lat: 41.9}];
+
+			var map = d3.select("#location")
+			  .attr("width", mapWidth)
+			  .attr("height", mapHeight);
+
+			var path = d3.geo.path()
+			  .projection(projection);
+
+			var g = map.append("g");
+
+			d3.json("map/world_map.json", function(error, topology) {
+				g.selectAll("path")
+					.data(topojson.object(topology, topology.objects.countries).geometries)
+				  	.enter()
+				    .append("path")
+				    .attr("class", function(d) { return "subunit " + d.id; })
+				    .attr("d", path)
+				    .attr("fill", "#DDCEA0")
+
+				g.append("path")
+					.datum(topojson.mesh(topology, topology.objects.countries, function(a, b) { return a !== b; }))
+					.attr("class", "boundary")
+					.attr("d", path);
+
+				g.selectAll(".mark")
+				    .data(marks)
+				    .enter()
+				    .append("circle")
+				    .attr("class", "pizza")
+				    .attr('r', 8)
+				    .attr('fill', '#000')
+				    .attr("transform", function(d) {return "translate(" + projection([d.long,d.lat]) + ")";});
+			});
+	    </script>
 	</body>
 </html>
