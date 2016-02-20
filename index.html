@@ -14,7 +14,9 @@
 		<script src="http://d3js.org/topojson.v0.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/timeline.js"></script>
+		<script type="text/javascript" src="js/how.js"></script>
 		<script type="text/javascript" src="js/type.js"></script>
+		<script type="text/javascript" src="js/world.js"></script>
 		<script type="text/javascript" src="js/quantity.js"></script>
 	</head>
 	<body>
@@ -90,54 +92,30 @@
 			</div>
 			</section>
 
-			<section class="location">
-			<h3>Locations</h3>
+			<section class="location" style="border-bottom: 1px solid #DDCEA0;">
+			<h3 style="margin-bottom: 3px">Locations</h3>
 			<svg id="location" class="chart"></svg>
 			</section>
+			<!--
+			<section class="location">
+			<h3>How</h3>
+			<svg id="how" class="chart"></svg>
+			</section>-->
+
+			<footer>
+				<p><small>Made in Brooklyn by <a href="/">Francesco Fraioli</a> - code available on <a href="https://github.com/pinakes/33">github</a></small></p>
+			</footer>
 		</div>
-		<script type="text/javascript">
-			var mapWidth = 960;
-			var mapHeight = 450;
 
-			var projection = d3.geo.mercator()
-			    .scale(250)
-			    .translate([mapWidth / 1.6, mapHeight / 1.5])
-			    .precision(.5);
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-			var marks = [{long: -74, lat: 40.7}, {long: 12.2, lat: 45.4}, {long: 12.5, lat: 41.9}];
+			ga('create', 'UA-29023328-2', 'auto');
+			ga('send', 'pageview');
 
-			var map = d3.select("#location")
-			  .attr("width", mapWidth)
-			  .attr("height", mapHeight);
-
-			var path = d3.geo.path()
-			  .projection(projection);
-
-			var g = map.append("g");
-
-			d3.json("map/world_map.json", function(error, topology) {
-				g.selectAll("path")
-					.data(topojson.object(topology, topology.objects.countries).geometries)
-				  	.enter()
-				    .append("path")
-				    .attr("class", function(d) { return "subunit " + d.id; })
-				    .attr("d", path)
-				    .attr("fill", "#DDCEA0")
-
-				g.append("path")
-					.datum(topojson.mesh(topology, topology.objects.countries, function(a, b) { return a !== b; }))
-					.attr("class", "boundary")
-					.attr("d", path);
-
-				g.selectAll(".mark")
-				    .data(marks)
-				    .enter()
-				    .append("circle")
-				    .attr("class", "pizza")
-				    .attr('r', 8)
-				    .attr('fill', '#000')
-				    .attr("transform", function(d) {return "translate(" + projection([d.long,d.lat]) + ")";});
-			});
-	    </script>
+		</script>
 	</body>
 </html>

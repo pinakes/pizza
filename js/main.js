@@ -52,8 +52,6 @@ d3.csv(csvUrl, function(error, data) {
 	    .attr("class", "tooltip")
 	    .style("opacity", 0);
 
-	console.log(data);
-
     //Pizza Counter
     d3.select(".totPizza").text(data.length)
 
@@ -65,5 +63,12 @@ d3.csv(csvUrl, function(error, data) {
 
 	// Type
 	type(data, tooltip);
-	
+
+    // world
+    d3.json("map/world_map.json", function(error, topology) {
+        world(topology, data, tooltip);
+    });
+
+    // how
+    how(data, tooltip);
 });
