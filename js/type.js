@@ -32,8 +32,6 @@ function type(data, tooltip) {
   	xTyp.domain([0, d3.max(typeDataType, function(d) { return d.value; })]);
   	xNme.domain([0, d3.max(typeDataName, function(d) { return d.value; })]);
 
-  	console.log(typeDataName)
-
 	var pizzaTypes = d3.select("#type")
 		.style({
 			"width": halfWidth + margin.left + margin.right + "px",

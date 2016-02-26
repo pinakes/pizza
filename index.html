@@ -9,20 +9,13 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,700,400italic' rel='stylesheet' type='text/css'>
 		<!--<script type="text/javascript" src="js/d3.js"></script>-->
-		<script src="http://d3js.org/d3.v3.min.js"></script>
-		<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
-		<script src="http://d3js.org/topojson.v0.min.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/timeline.js"></script>
-		<script type="text/javascript" src="js/type.js"></script>
-		<script type="text/javascript" src="js/quantity.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<section class="hero">
 				<div class="titolo">
 					<h1 class="light">A Year of Pizza</h1>
-					<div id="spiega"><p>In my 33th year I'd like to track some good things. <br>Yes, it's an academic exercise just and opportunity to build something in d3.js and google spreadsheets.</p>
+					<div id="spiega"><p>Data visualization project about pizza.<br>This web page pulls information from a <a href="https://docs.google.com/spreadsheets/d/1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ/edit#gid=0" target="_blank">spreadsheet</a> that I use to track my pizza consumption. I'm using D3.js to generate the charts.</p>
 					<hr>
 					<h5>Total number of Pizza so far</h5>
 					<h4 class="bigAndLight totPizza"></h4>
@@ -90,54 +83,30 @@
 			</div>
 			</section>
 
-			<section class="location">
-			<h3>Locations</h3>
+			<section class="location" style="border-bottom: 1px solid #DDCEA0;">
+			<h3 style="margin-bottom: 3px">Locations</h3>
 			<svg id="location" class="chart"></svg>
 			</section>
+			<!--
+			<section class="location">
+			<h3>How</h3>
+			<svg id="how" class="chart"></svg>
+			</section>
+			-->
+			<footer>
+				<p><small>Made in Brooklyn by <a href="/">Francesco Fraioli</a> - code available on <a href="https://github.com/pinakes/33">github</a></small></p>
+			</footer>
 		</div>
-		<script type="text/javascript">
-			var mapWidth = 960;
-			var mapHeight = 450;
 
-			var projection = d3.geo.mercator()
-			    .scale(250)
-			    .translate([mapWidth / 1.6, mapHeight / 1.5])
-			    .precision(.5);
-
-			var marks = [{long: -74, lat: 40.7}, {long: 12.2, lat: 45.4}, {long: 12.5, lat: 41.9}];
-
-			var map = d3.select("#location")
-			  .attr("width", mapWidth)
-			  .attr("height", mapHeight);
-
-			var path = d3.geo.path()
-			  .projection(projection);
-
-			var g = map.append("g");
-
-			d3.json("map/world_map.json", function(error, topology) {
-				g.selectAll("path")
-					.data(topojson.object(topology, topology.objects.countries).geometries)
-				  	.enter()
-				    .append("path")
-				    .attr("class", function(d) { return "subunit " + d.id; })
-				    .attr("d", path)
-				    .attr("fill", "#DDCEA0")
-
-				g.append("path")
-					.datum(topojson.mesh(topology, topology.objects.countries, function(a, b) { return a !== b; }))
-					.attr("class", "boundary")
-					.attr("d", path);
-
-				g.selectAll(".mark")
-				    .data(marks)
-				    .enter()
-				    .append("circle")
-				    .attr("class", "pizza")
-				    .attr('r', 8)
-				    .attr('fill', '#000')
-				    .attr("transform", function(d) {return "translate(" + projection([d.long,d.lat]) + ")";});
-			});
-	    </script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+		<script src="http://d3js.org/topojson.v0.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/timeline.js"></script>
+		<script type="text/javascript" src="js/how.js"></script>
+		<script type="text/javascript" src="js/type.js"></script>
+		<script type="text/javascript" src="js/world.js"></script>
+		<script type="text/javascript" src="js/quantity.js"></script>
+		<script src="https://spreadsheets.google.com/feeds/list/1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ/od6/public/values?alt=json-in-script&callback=sheetLoaded"></script>
 	</body>
 </html>
