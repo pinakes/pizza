@@ -3,9 +3,9 @@ function world(worldMap, pizzaData, tooltip) {
 	// grouping the cities
 	var indexedByCity = pizzaData.reduce(function (prev, curr) {
 		if (prev[curr.city]) {
-	    	prev[curr.city] = {value: prev[curr.city].value + 1, long: curr.long, lat: curr.lat};
+	    	prev[curr.city] = {value: prev[curr.city].value + 1, longi: curr.longi, lat: curr.lat};
 		} else {
-	    	prev[curr.city] = {value: 1, long: curr.long, lat: curr.lat};
+	    	prev[curr.city] = {value: 1, longi: curr.longi, lat: curr.lat};
 		}
 		return prev;
 	}, {});
@@ -13,7 +13,7 @@ function world(worldMap, pizzaData, tooltip) {
 	var typeDataCity = [];
 
 	for (var city in indexedByCity) {
-	  typeDataCity.push({label: city, value: indexedByCity[city].value, long: indexedByCity[city].long, lat: indexedByCity[city].lat});
+	  typeDataCity.push({label: city, value: indexedByCity[city].value, longi: indexedByCity[city].longi, lat: indexedByCity[city].lat});
 	}
 	console.log(typeDataCity)
 
@@ -54,7 +54,7 @@ function world(worldMap, pizzaData, tooltip) {
 	    .append("circle")
 	    .attr("class", "pizza")
 	    .attr('r', function(d) { return 5 + d.value / 1.8})
-	    .attr("transform", function(d) { return "translate(" + projection([d.long,d.lat]) + ")";})
+	    .attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
 	    .on("mouseover", function(d) {
         	tooltip.transition()
                .duration(200)
@@ -84,6 +84,6 @@ function world(worldMap, pizzaData, tooltip) {
 		})
 		.attr("fill", "white")
 		.style("font-size", "12px")
-		.attr("transform", function(d) { return "translate(" + projection([d.long - 1.3, d.lat - 0.7]) + ")";});
+		.attr("transform", function(d) { return "translate(" + projection([d.longi - 1.3, d.lat - 0.7]) + ")";});
 
 }

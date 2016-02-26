@@ -53,6 +53,9 @@ h4.bigAndLight small {
 	font-size: 16px;
 }
 h5 { margin: 0; }
+a:hover, a:visited {
+	color: #C05E3C;
+}
 p {	font-weight: 400; margin: 0.5em 0; line-height: 1.3em; }
 section { padding-top: 1em; }
 hr { 
