@@ -18,22 +18,22 @@ function how(data, tooltip) {
 	console.log(typeDataHow)
 
 	var radius = Math.min(960, 500) / 2;
-
+	
 	d3.select("svg#how").append("defs")
 		.append("pattern")
 		.attr("id", "bg")
 		.attr('patternUnits', 'userSpaceOnUse')
-        .attr('width', 6)
-        .attr('height', 6)
-        .attr('x', 0)
+        .attr('width', 298)
+        .attr('height', 298)
+        .attr('x', 60)
 		.attr('y', 0)
 		.append("image")
-			.attr("xlink:href", "/images/pizza.png")
-			.attr('width', 6)
-	        .attr('height', 6)
+			.attr("xlink:href", "/images/pizzaPattern.jpg")
+			.attr('width', 300)
+	        .attr('height', 300)
 	        .attr('x', 0)
 			.attr('y', 0);
-
+	
 	d3.select("svg#how")
 	    .attr("width", 960)
 	    .attr("height", 500)
@@ -59,9 +59,11 @@ function how(data, tooltip) {
     howGraph.append("path")
 		.attr("d", arc)
 		.style({
+			//"fill" : "#F80404",
 		    "stroke": "#FFFFF7",
-		    "stroke-width": 3
-		});
+		    "stroke-width": 5
+		})
+		.attr("d", arcPhantom).style('stroke', 'white')
 
 	function type(d) {
 		d.population = +d.population;
