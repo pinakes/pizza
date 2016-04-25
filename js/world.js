@@ -15,7 +15,7 @@ function world(worldMap, pizzaData, tooltip) {
 	for (var city in indexedByCity) {
 	  typeDataCity.push({label: city, value: indexedByCity[city].value, longi: indexedByCity[city].longi, lat: indexedByCity[city].lat});
 	}
-	console.log(typeDataCity)
+	//console.log(typeDataCity)
 
 	// world map
 	var mapWidth = 960;
@@ -72,6 +72,7 @@ function world(worldMap, pizzaData, tooltip) {
                .style("opacity", 0);
       	});
 
+    /*
 	g.selectAll(".numbers")
 		.data(typeDataCity)
 		.enter()
@@ -85,5 +86,6 @@ function world(worldMap, pizzaData, tooltip) {
 		.attr("fill", "white")
 		.style("font-size", "12px")
 		.attr("transform", function(d) { return "translate(" + projection([d.longi - 1.3, d.lat - 0.7]) + ")";});
+	*/
 
 }

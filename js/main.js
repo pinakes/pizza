@@ -14,14 +14,13 @@ var parseDate = d3.time.format("%d-%m-%Y").parse;
 var yTml = d3.scale.ordinal().rangeRoundBands([height, 0]);
 
 var xTml = d3.time.scale()
-    .domain([new Date(2015, 10, 1), new Date(2016, 10, 15)])
     .range([0, width]);
 
 var xAxis = d3.svg.axis()
     .scale(xTml)
     .orient("bottom")
-    .ticks(3)
-    .tickSize(3, 0)
+    .ticks(12)
+    .tickSize(2, 0)
 
 var yAxis = d3.svg.axis()
     .scale(yTml)
@@ -36,12 +35,19 @@ function customAxis(g) {
 
 // Type
 var halfWidth = 440
+var thirdWidth = 310
 
 var xTyp = d3.scale.linear()
-    .range([0, halfWidth]);
+    .range([0, thirdWidth]);
 
 var xNme = d3.scale.linear()
-    .range([0, halfWidth]);
+    .range([0, thirdWidth]);
+
+var xHow = d3.scale.linear()
+    .range([0, thirdWidth]);
+
+var xWhn = d3.scale.linear()
+    .range([0, thirdWidth]);
 
 function sheetLoaded(data) {
     data = data.feed.entry.map(function (entry) {
@@ -62,7 +68,7 @@ function sheetLoaded(data) {
     data.forEach(function(d) {
         d.date = parseDate(d.date);
     })
-    console.log("data length: " + data.length)
+    //console.log("data length: " + data.length)
     // add the tooltip area to the webpage
     var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -71,8 +77,11 @@ function sheetLoaded(data) {
     //Pizza Counter
     d3.select(".totPizza").text(data.length)
 
+    // Full Graph
+    fullgraph(data, tooltip);
+
     // Timeline
-    timeline(data, tooltip);
+    //timeline(data, tooltip);
 
     // Quantity
     quantity(data);
@@ -86,5 +95,5 @@ function sheetLoaded(data) {
     });
 
     // how
-    how(data, tooltip);
+    //how(data, tooltip);
 }
