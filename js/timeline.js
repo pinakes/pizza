@@ -1,12 +1,23 @@
 function timeline(data, tooltip) {
 
 	yTml.domain(data.map(function(d) { return d.type; }))
+	xTml.domain([new Date(2015, 10, 1), new Date(2016, 10, 15)])
 
 	var timeline = d3.select("#timeline")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	var gy = timeline.append("g")
+	    .attr("class", "y axis")
+	    .call(yAxis)
+	    .call(customAxis);
+
+	var gx = timeline.append("g")
+	    .attr("class", "x axis")
+	    .attr("transform", "translate(0," + height + ")")
+	    .call(xAxis);
 
 	var toolTipDate = d3.time.format("%a, %d %b");
 	timeline.selectAll(".pizza")
@@ -47,15 +58,4 @@ function timeline(data, tooltip) {
 		 		return "★"; 
 		 	}
 		})
-
-
-	var gy = timeline.append("g")
-	    .attr("class", "y axis")
-	    .call(yAxis)
-	    .call(customAxis);
-
-	var gx = timeline.append("g")
-	    .attr("class", "x axis")
-	    .attr("transform", "translate(0," + height + ")")
-	    .call(xAxis);
 }
