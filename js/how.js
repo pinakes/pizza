@@ -15,7 +15,7 @@ function how(data, tooltip) {
 	  typeDataHow.push({label: label, value: indexedByHow[label]});
 	}
 
-	console.log(typeDataHow)
+	//console.log(typeDataHow)
 
 	var radius = Math.min(960, 500) / 2;
 

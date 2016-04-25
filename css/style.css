@@ -28,10 +28,13 @@ body {
     font-style: normal;
 }
 
-h1, h2, h5 { font-family: "geomanist-black", Helvetica, arial, sans-serif; text-transform: uppercase;}
+h1, h2, h4, h5 { font-family: "geomanist-black", Helvetica, arial, sans-serif; text-transform: uppercase;}
 h1 {  
 	font-size: 3.7em;
 	margin: 0;
+}
+h2 {
+	margin-top: 0.2em;
 }
 h3 { 
 	border-bottom: 1px solid #DDCEA0;
@@ -39,7 +42,7 @@ h3 {
     font-size: 2.5em;
     font-weight: 100;
 }
-h4.bigAndLight { 
+.bigAndLight { 
 	font-family: "geomanist-light", Helvetica, arial, sans-serif; 
 	text-transform: capitalize;
 	font-size: 3.5em;
@@ -47,7 +50,7 @@ h4.bigAndLight {
 	margin: 0.2em 0;
 	color: #F80404;
 }
-h4.bigAndLight small {
+.bigAndLight small {
 	font-family: Garamond, Georgia, serif;
 	text-transform: lowercase;
 	font-size: 16px;
@@ -55,6 +58,9 @@ h4.bigAndLight small {
 h5 { margin: 0; }
 a:hover, a:visited {
 	color: #C05E3C;
+}
+small { 
+	font-family: "geomanist-light", Helvetica, arial, sans-serif; 
 }
 p {	font-weight: 400; margin: 0.5em 0; line-height: 1.3em; }
 section { padding-top: 1em; }
@@ -70,6 +76,7 @@ hr {
 	float: left;
 }
 .row .col.two { width: 50%; }
+.row .col.three { width: 33.33333333%; }
 .row .col.four { width: 25%; }
 .hero {
 	display: inline-block;
@@ -103,20 +110,24 @@ svg text, .chart {
 .popular p {
 	padding-right: 35px;
 }
-.pizzaTypes, .pizzaPlaces {
+.pizzaTypes, .pizzaPlaces, 
+.pizzaHows, .pizzaWhens {
 	position: relative;
     border-bottom: 1px solid #DDCEA0;
     margin-bottom: 6px;
 }
-.pizzaTypes text, .pizzaPlaces text {
+.pizzaTypes text, .pizzaPlaces text, 
+.pizzaHows text, .pizzaWhens text  {
 	font-size: 14px;
 	line-height: 20px;
 }
-.pizzaTypes text.pizzaTypeValue, .pizzaPlaces text.pizzaTypeValue {
+.pizzaTypes text.pizzaTypeValue, .pizzaPlaces text.pizzaTypeValue, 
+.pizzaHows text.pizzaHowValue, .pizzaWhens text.pizzaWhenValue {
 	position: absolute;
 	right: 10px;
 }
-.pizzaType, .pizzaPlace {
+.pizzaType, .pizzaPlace, 
+.pizzaHow, .pizzaWhen {
 	padding-right: 0.5em;
 	background-color: #F80404;
 	color: #000;
@@ -125,24 +136,26 @@ svg text, .chart {
 	pointer-events: none;
 	color: #fff;
 }
-.pizzaType:hover, .pizzaPlace:hover {
+.pizzaType:hover, .pizzaPlace:hover, .pizzaHow:hover {
 	cursor: pointer;
 	background-color: #FF9393;
 }
 .pizza {
 	fill: #F80404;
-	stroke: #F1D622;
+	/*stroke: #F1D622;*/
+	stroke: #FFFFF7;
 	stroke-width: 2;
 }
 .pizza:hover {
 	cursor: pointer;
 	fill: #FF9393;
-	stroke: #FBEF9E;
+	/*stroke: #FBEF9E;*/
+	stroke: #FFFFF7;
 }
 .axis line,
 .axis path {
 	fill: none;
-	stroke: #000;
+	stroke: #DDCEA0;
 	shape-rendering: crispEdges;
 }
 
@@ -151,8 +164,8 @@ svg text, .chart {
 }
 
 .y.axis line {
-	stroke: #777;
-	stroke-dasharray: 2,2;
+	stroke: #DDCEA0;
+	stroke-dasharray: 2,4;
 	z-index: -1;
 }
 .tooltip {
