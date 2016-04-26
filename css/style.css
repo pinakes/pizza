@@ -59,7 +59,7 @@ h5 { margin: 0; }
 a:hover, a:visited {
 	color: #C05E3C;
 }
-small { 
+h1 small, h2 small, h3 small, h4 small, h5 small { 
 	font-family: "geomanist-light", Helvetica, arial, sans-serif; 
 }
 p {	font-weight: 400; margin: 0.5em 0; line-height: 1.3em; }
@@ -146,11 +146,34 @@ svg text, .chart {
 	stroke: #FFFFF7;
 	stroke-width: 2;
 }
+#timeline .pizza:last-child {
+	/*fill: #880C0C;*/
+	fill: #FFFFF7;
+    stroke: #F80404;
+    r: 5;
+}
+#timeline .pizza:last-child:hover {
+	/*fill: #880C0C;*/
+	fill: #F80404;
+    stroke: #F80404;
+    r: 5;
+}
+.pizzaPin {
+	fill: rgba(248,4,4,.1);
+	stroke: #F80404;
+	/*stroke: #F1D622;*/
+	stroke-width: 1.5;
+}
+.pizzaPin:hover {
+	cursor: pointer;
+	fill: rgba(248,4,4,.25);
+	stroke: #F80404;
+}
 .pizza:hover {
 	cursor: pointer;
-	fill: #FF9393;
-	/*stroke: #FBEF9E;*/
-	stroke: #FFFFF7;
+	/*fill: #FF9393;
+	stroke: #FBEF9E;*/
+	stroke: #F80404;
 }
 .axis line,
 .axis path {
