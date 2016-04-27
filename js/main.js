@@ -83,6 +83,9 @@ function sheetLoaded(data) {
     // Timeline
     //timeline(data, tooltip);
 
+    // Ingredients
+    ingredients(data);
+
     // Quantity
     quantity(data);
 
