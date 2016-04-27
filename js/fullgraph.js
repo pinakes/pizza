@@ -11,7 +11,7 @@ function fullgraph(data, tooltip) {
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	    .attr("transform", "translate(" + margin.left + ", 20)");
 
 	var gy = timeline.append("g")
 	    .attr("class", "y axis")

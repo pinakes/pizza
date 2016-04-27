@@ -7,7 +7,7 @@ var key = "1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ",  // key for demo sprea
 // Timeline
 var margin = {top: 50, right: 0, bottom: 50, left: 0},
     width = 960 - margin.left - margin.right,
-    height = 360 - margin.top - margin.bottom;
+    height = 340 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%d-%m-%Y").parse;
 
@@ -48,6 +48,9 @@ var xHow = d3.scale.linear()
 
 var xWhn = d3.scale.linear()
     .range([0, thirdWidth]);
+
+var xTpp = d3.scale.linear()
+    .range([0, halfWidth]);
 
 function sheetLoaded(data) {
     data = data.feed.entry.map(function (entry) {
@@ -90,7 +93,10 @@ function sheetLoaded(data) {
     quantity(data);
 
     // Type
-    type(data, tooltip);
+    //type(data, tooltip);
+
+    // Type
+    pies(data, tooltip);
 
     // world
     d3.json("map/world_map.json", function(error, topology) {

@@ -26,70 +26,74 @@
 				</div>
 			</section>
 
-			<section class="ingredients">
-			<h3>Total Ingredients</h3>
-			<div class="row">
-				<div class="col four">
-					<img src="images/flour.png">
-					<div>
-						<h5>Flour</h5>
-						<h4 id="flour" class="bigAndLight"></h4>
-						<p>200g x 1 pizza</p>
-					</div>
-				</div>
-				<div class="col four">
-					<img src="images/yeast.png">
-					<div>
-						<h5>Yeast</h5>
-						<h4 id="yeast" class="bigAndLight"></h4>
-						<p>1.75g x 1 pizza</p>
-					</div>
-				</div>
-				<div class="col four">
-					<img src="images/oil.png">
-					<div>
-						<h5>Oil</h5>
-						<h4 id="oil" class="bigAndLight"></h4>
-						<p>15ml x 1 pizza</p>
-					</div>
-				</div>
-				<div class="col four">
-					<img src="images/water.png">
-					<div>
-						<h5>Water</h5>
-						<h4 id="water" class="bigAndLight"></h4>
-						<p>150ml x 1 pizza</p>
-					</div>
-				</div>
-			</div>
-			</section>
 
 			<section class="timeline">
-			<h3>When, Where and Which type</h3>
 			<h5>Timeline</h5>
 			<svg id="timeline" class="chart"></svg>
 						
 			<div class="row">
-				<div class="col three popular">
+				<div class="col five">
 					<h5>Type</h5>
-					<div id="type" class="chart"></div>
-					<!--<h4 class="bigAndLight">Napoletana</h4>
-					<p style="margin: 1.5em 0">The genuine Neapolitan pizza dough consists of wheat flour (type 0 or 00, or a mixture of both), natural Neapolitan yeast or brewer's yeast, salt and water. For proper results, strong flour with high protein content (as used for bread-making rather than cakes) must be used. The dough must be kneaded by hand or with a low-speed mixer. After the rising process, the dough must be formed by hand without the help of a rolling pin or other machine, and may be no more than 3 millimeters (0.12 in) thick</p>-->
+					<svg id="type" class="chart"></svg>
 				</div>
 				<div class="col three">
 					<h5>How</h5>
 					<div id="how" class="chart"></div>
-				</div>
-				<div class="col three">
 					<h5>When</h5>
 					<div id="when" class="chart"></div>
 				</div>
 			</div>
 			</section>
 
+			<section class="ingredients">
+				<h3>Total Ingredients</h3>
+				<div class="row mainIngredients">
+					<div class="col four">
+						<img src="images/flour.png">
+						<div>
+							<h5>Flour</h5>
+							<h4 id="flour" class="bigAndLight"></h4>
+							<p>200g x 1 pizza</p>
+						</div>
+					</div>
+					<div class="col four">
+						<img src="images/yeast.png">
+						<div>
+							<h5>Yeast</h5>
+							<h4 id="yeast" class="bigAndLight"></h4>
+							<p>1.75g x 1 pizza</p>
+						</div>
+					</div>
+					<div class="col four">
+						<img src="images/oil.png">
+						<div>
+							<h5>Oil</h5>
+							<h4 id="oil" class="bigAndLight"></h4>
+							<p>15ml x 1 pizza</p>
+						</div>
+					</div>
+					<div class="col four">
+						<img src="images/water.png">
+						<div>
+							<h5>Water</h5>
+							<h4 id="water" class="bigAndLight"></h4>
+							<p>150ml x 1 pizza</p>
+						</div>
+					</div>
+				</div>
+				<!--
+				<div class="row">
+					<div class="col two">
+						<h5>Topping</h5>
+						<div id="topping" class="chart"></div>
+					</div>
+				</div>
+				-->
+			</section>
+
 			<section class="location" style="border-bottom: 1px solid #DDCEA0;">
-			<h3 style="margin-bottom: 3px">Locations</h3>
-			<svg id="location" class="chart"></svg>
+				<h3 style="margin-bottom: 3px">Locations</h3>
+				<svg id="location" class="chart"></svg>
 			</section>
 			
 			<footer>
@@ -108,6 +112,7 @@
 		<script type="text/javascript" src="js/world.js"></script>
 		<script type="text/javascript" src="js/quantity.js"></script>
 		<script type="text/javascript" src="js/ingredients.js"></script>
+		<script type="text/javascript" src="js/pies.js"></script>
 		<script src="https://spreadsheets.google.com/feeds/list/1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ/od6/public/values?alt=json-in-script&callback=sheetLoaded"></script>
 
 		<script>
