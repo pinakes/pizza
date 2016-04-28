@@ -254,6 +254,7 @@ function pies(data, tooltip) {
 			};
 		});
 
+	// use this to animate the graph
 	//text.exit()
 		//.remove();
 
@@ -276,7 +277,8 @@ function pies(data, tooltip) {
 				return [innerArc.centroid(d2), outerArc.centroid(d2), pos];
 			};			
 		});
-	
+
+	// use this to animate the graph
 	//polyline.exit()
 		//.remove();
 

@@ -83,20 +83,14 @@ function sheetLoaded(data) {
     // Full Graph
     fullgraph(data, tooltip);
 
-    // Timeline
-    //timeline(data, tooltip);
+    // Type, How and When
+    pies(data, tooltip);
 
     // Ingredients
-    ingredients(data);
+    //ingredients(data);
 
     // Quantity
     quantity(data);
-
-    // Type
-    //type(data, tooltip);
-
-    // Type
-    pies(data, tooltip);
 
     // world
     d3.json("map/world_map.json", function(error, topology) {
