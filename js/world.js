@@ -52,7 +52,7 @@ function world(worldMap, pizzaData, tooltip) {
 	    .data(typeDataCity)
 	    .enter()
 	    .append("circle")
-	    .attr("class", "pizza")
+	    .attr("class", "pizzaPin")
 	    .attr('r', function(d) { return 5 + d.value / 1.8})
 	    .attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
 	    .on("mouseover", function(d) {

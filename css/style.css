@@ -59,7 +59,7 @@ h5 { margin: 0; }
 a:hover, a:visited {
 	color: #C05E3C;
 }
-small { 
+h1 small, h2 small, h3 small, h4 small, h5 small { 
 	font-family: "geomanist-light", Helvetica, arial, sans-serif; 
 }
 p {	font-weight: 400; margin: 0.5em 0; line-height: 1.3em; }
@@ -78,6 +78,7 @@ hr {
 .row .col.two { width: 50%; }
 .row .col.three { width: 33.33333333%; }
 .row .col.four { width: 25%; }
+.row .col.five { width: 66.66666666%; }
 .hero {
 	display: inline-block;
 	padding: 8em 0;
@@ -111,26 +112,26 @@ svg text, .chart {
 	padding-right: 35px;
 }
 .pizzaTypes, .pizzaPlaces, 
-.pizzaHows, .pizzaWhens {
+.pizzaHows, .pizzaWhens, .pizzaToppings {
 	position: relative;
     border-bottom: 1px solid #DDCEA0;
     margin-bottom: 6px;
 }
 .pizzaTypes text, .pizzaPlaces text, 
-.pizzaHows text, .pizzaWhens text  {
+.pizzaHows text, .pizzaWhens text, .pizzaToppings text  {
 	font-size: 14px;
 	line-height: 20px;
 }
 .pizzaTypes text.pizzaTypeValue, .pizzaPlaces text.pizzaTypeValue, 
-.pizzaHows text.pizzaHowValue, .pizzaWhens text.pizzaWhenValue {
+.pizzaHows text.pizzaHowValue, .pizzaWhens text.pizzaWhenValue, .pizzaToppings text.pizzaToppingValue {
 	position: absolute;
 	right: 10px;
 }
 .pizzaType, .pizzaPlace, 
-.pizzaHow, .pizzaWhen {
+.pizzaHow, .pizzaWhen, .pizzaTopping {
 	padding-right: 0.5em;
 	background-color: #F80404;
-	color: #000;
+	margin-bottom: -1px;
 }
 .pizzaVote {
 	pointer-events: none;
@@ -140,17 +141,43 @@ svg text, .chart {
 	cursor: pointer;
 	background-color: #FF9393;
 }
+#how {
+	margin-bottom: 4em;
+}
 .pizza {
 	fill: #F80404;
 	/*stroke: #F1D622;*/
 	stroke: #FFFFF7;
 	stroke-width: 2;
 }
+#timeline .pizza:last-child {
+	/*fill: #880C0C;*/
+	fill: #FFFFF7;
+    stroke: #F80404;
+    r: 5;
+}
+#timeline .pizza:last-child:hover {
+	/*fill: #880C0C;*/
+	fill: #F80404;
+    stroke: #F80404;
+    r: 5;
+}
+.pizzaPin {
+	fill: rgba(248,4,4,.1);
+	stroke: #F80404;
+	/*stroke: #F1D622;*/
+	stroke-width: 1.5;
+}
+.pizzaPin:hover {
+	cursor: pointer;
+	fill: rgba(248,4,4,.25);
+	stroke: #F80404;
+}
 .pizza:hover {
 	cursor: pointer;
-	fill: #FF9393;
-	/*stroke: #FBEF9E;*/
-	stroke: #FFFFF7;
+	/*fill: #FF9393;
+	stroke: #FBEF9E;*/
+	stroke: #F80404;
 }
 .axis line,
 .axis path {
@@ -180,24 +207,36 @@ svg text, .chart {
 .tooltip hr {
 	border-bottom: 1px solid white;
 }
-.ingredients .row .col img {
+.mainIngredients.row .col img {
     width: 40%;
     float: left;
 }
-.ingredients .row .col h5 {
+.mainIngredients.row .col h5 {
     clear: both;
     margin-bottom: 8px;
 }
-.ingredients .row .col div {
+.mainIngredients.row .col div {
 	float: left;
     margin-left: 12px;
 }
-.ingredients .row .col p {
+.mainIngredients.row .col p {
 	margin: 0
 }
-.ingredients .row .col .bigAndLight {
+.mainIngredients.row .col .bigAndLight {
     margin: 0;
     line-height: 42px;
+}
+
+/* pies */
+.phantom-arc:hover path {
+	fill-opacity: .5;
+	cursor: pointer;
+}
+
+polyline{
+	stroke: #F80404;
+	stroke-width: 1;
+	fill: none;
 }
 
 /* map */

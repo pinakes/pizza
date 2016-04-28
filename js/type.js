@@ -182,21 +182,4 @@ function type(data, tooltip) {
 			"height": "4px",
 			"width": function(d) { return xWhn(d.value) - 6 + "px"; }
 		})
-
-
-		/*.on("mouseover", function(d) {
-        	tooltip.transition()
-            	.duration(200)
-            	.style("opacity", .9);
-        	tooltip.html(d.label)
-            	.style({
-	               	"left": (xTyp(d.value)) + 42 + "px",
-	               	"top": (d3.event.pageY - 42) + "px"
-               	})
-	    })
-      	.on("mouseout", function(d) {
-         	tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
-      	});*/
 }
