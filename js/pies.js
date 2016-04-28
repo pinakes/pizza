@@ -138,7 +138,7 @@ function pies(data, tooltip) {
 	        .attr('x', 60)
 			.attr('y', 0)
 			.append("image")
-				.attr("xlink:href", "/images/pizzaPattern.jpg")
+				.attr("xlink:href", "images/pizzaPattern.jpg")
 				.attr('width', 125)
 		        .attr('height', 125)
 		        .attr('x', 0)
