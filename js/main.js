@@ -50,7 +50,7 @@ var xWhn = d3.scale.linear()
     .range([0, thirdWidth]);
 
 var xTpp = d3.scale.linear()
-    .range([0, halfWidth]);
+    .range([0, thirdWidth]);
 
 function sheetLoaded(data) {
     data = data.feed.entry.map(function (entry) {
@@ -87,7 +87,7 @@ function sheetLoaded(data) {
     pies(data, tooltip);
 
     // Ingredients
-    //ingredients(data);
+    ingredients(data);
 
     // Quantity
     quantity(data);

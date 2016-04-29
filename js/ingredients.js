@@ -1,4 +1,35 @@
 function ingredients(data) {
+	
+	// Topping aggregated per pizza
+	var comp = []
+
+	data.forEach(function(d){
+		comp.push({"topping":d.topping.split(", "), "name":d.name})
+	})
+
+	var pizzaCompos = d3.select("#comp")
+
+	pizzaCompos.selectAll(".comp")
+		.data(comp)
+		.enter().append("div")
+		.attr("class", "comp col four")
+		.html(function(d){
+			return "<p>"+ d.name +"</p>"
+		})
+			.append("p")
+			.attr("class", "ciao")
+			.html(function(d) { 
+				var content = d.topping.reduce(function(content, v) {
+					content += "<label class='"+ v.split(" ").join("-") +"'>" + v + "</label>"
+					return content
+				}, "");
+				return content
+				})
+				
+
+
+
+	// Topping aggregated per ingredient
 	var ingredients = [];
 
 	data.forEach(function(d){
@@ -24,16 +55,12 @@ function ingredients(data) {
 	  typeDataTopping.push({label: topping, value: indexedByTopping[topping]});
 	}
 
-	var pie = d3.layout.pie()
-		.sort(null)
-	    .value(function(d) { return d.value; });
-
 	xTpp.domain([0, d3.max(typeDataTopping, function(d) { return d.value; })]);
 
 
 	var pizzaToppings = d3.select("#topping")
 		.style({
-			"width": halfWidth + margin.left + margin.right + "px",
+			"width": thirdWidth + margin.left + margin.right + "px",
 			"height": typeDataTopping.length * 30 + "px"
 		})
 	var pizzaTopping = d3.selectAll(".pizzaToppings")
@@ -60,4 +87,11 @@ function ingredients(data) {
 			"height": "5px",
 			"width": function(d) { return xTpp(d.value) - 6 + "px"; }
 		})
+		.on("mouseover", function(d) { highlight(d.label); })
+		.on("mouseout", function(d) { highlight(null); })
+
+	function highlight(ingredient) {
+		if (ingredient == null) d3.select("#comp").selectAll("label").classed("selected", false);
+		else d3.select("#comp").selectAll("label." + ingredient.split(" ").join("-")).classed("selected", true);
+	}
 }

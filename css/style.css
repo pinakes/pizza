@@ -137,7 +137,7 @@ svg text, .chart {
 	pointer-events: none;
 	color: #fff;
 }
-.pizzaType:hover, .pizzaPlace:hover, .pizzaHow:hover {
+.pizzaTopping:hover {
 	cursor: pointer;
 	background-color: #FF9393;
 }
@@ -207,6 +207,23 @@ svg text, .chart {
 .tooltip hr {
 	border-bottom: 1px solid white;
 }
+
+/* pies */
+.phantom-arc:hover path {
+	fill-opacity: .5;
+	cursor: pointer;
+}
+
+polyline{
+	stroke: #F80404;
+	stroke-width: 1;
+	fill: none;
+}
+
+/* ingredients */
+.mainIngredients {
+	margin-bottom: 4em;
+}
 .mainIngredients.row .col img {
     width: 40%;
     float: left;
@@ -226,17 +243,22 @@ svg text, .chart {
     margin: 0;
     line-height: 42px;
 }
-
-/* pies */
-.phantom-arc:hover path {
-	fill-opacity: .5;
-	cursor: pointer;
+.comp {
+	min-height: 100px;
 }
-
-polyline{
-	stroke: #F80404;
-	stroke-width: 1;
-	fill: none;
+label {
+	line-height: 14px;
+    background: #DDCEA0;
+    padding: 0.2em 0.8em;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    margin-right: 0.2em;
+    margin-bottom: 0.2em;
+    display: inline-flex;
+}
+label.selected {
+	background: red;
 }
 
 /* map */
