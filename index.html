@@ -80,12 +80,32 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col">
+						<h5>Topping List</h5>
+						<svg id="topping" class="chart"></svg>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h5>Pizzas</h5>
+						<div id="comp" class="chart"></div>
+					</div>
+				</div>
 			</section>
 
 			<section class="location" style="border-bottom: 1px solid #DDCEA0;">
 				<h3 style="margin-bottom: 3px">Locations</h3>
 				<svg id="location" class="chart"></svg>
 			</section>
+
+			<div class="bottom">
+				<select name="select" id="nValue">
+					<option value="0" selected>November 2015</option> 
+					<option value="1">December 2015</option>
+					<option value="2">January 2016</option>
+				</select>
+			</div>
 			
 			<footer>
 				<p><small>Made in Brooklyn by <a href="/">Francesco Fraioli</a> - code available on <a href="https://github.com/pinakes/33">github</a></small></p>
@@ -99,6 +119,7 @@
 		<script type="text/javascript" src="js/fullgraph.js"></script>
 		<script type="text/javascript" src="js/world.js"></script>
 		<script type="text/javascript" src="js/quantity.js"></script>
+		<script type="text/javascript" src="js/ingredients.js"></script>
 		<script type="text/javascript" src="js/pies.js"></script>
 		<script src="https://spreadsheets.google.com/feeds/list/1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ/od6/public/values?alt=json-in-script&callback=sheetLoaded"></script>
 

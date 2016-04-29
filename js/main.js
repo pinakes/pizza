@@ -49,8 +49,20 @@ var xHow = d3.scale.linear()
 var xWhn = d3.scale.linear()
     .range([0, thirdWidth]);
 
-var xTpp = d3.scale.linear()
-    .range([0, halfWidth]);
+var xTpp = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var yTpp = d3.scale.linear()
+    .range([0, 200]);
+
+var xtAxis = d3.svg.axis()
+    .scale(xTpp)
+    .orient("bottom")
+
+var ytAxis = d3.svg.axis()
+    .scale(yTpp)
+    .orient("left")
+    .ticks(10, "");
 
 function sheetLoaded(data) {
     data = data.feed.entry.map(function (entry) {
@@ -71,6 +83,8 @@ function sheetLoaded(data) {
     data.forEach(function(d) {
         d.date = parseDate(d.date);
     })
+
+
     //console.log("data length: " + data.length)
     // add the tooltip area to the webpage
     var tooltip = d3.select("body").append("div")
@@ -87,7 +101,7 @@ function sheetLoaded(data) {
     pies(data, tooltip);
 
     // Ingredients
-    //ingredients(data);
+    ingredients(data);
 
     // Quantity
     quantity(data);
