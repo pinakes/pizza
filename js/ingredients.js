@@ -27,8 +27,6 @@ function ingredients(data) {
 				})
 				
 
-
-
 	// Topping aggregated per ingredient
 	var ingredients = [];
 
@@ -55,40 +53,47 @@ function ingredients(data) {
 	  typeDataTopping.push({label: topping, value: indexedByTopping[topping]});
 	}
 
-	xTpp.domain([0, d3.max(typeDataTopping, function(d) { return d.value; })]);
-
+    xTpp.domain(data.map(function(d) { return d.label; }));
+	yTpp.domain([0, d3.max(typeDataTopping, function(d) { return d.value; })]);	
 
 	var pizzaToppings = d3.select("#topping")
-		.style({
-			"width": thirdWidth + margin.left + margin.right + "px",
-			"height": typeDataTopping.length * 30 + "px"
-		})
-	var pizzaTopping = d3.selectAll(".pizzaToppings")
+		/*.style({
+			"height": thirdWidth + margin.left + margin.right + "px"
+			"width": typeDataTopping.length + "px"
+		})*/
+		.attr("width", width + margin.left + margin.right)
+    	.attr("height", 200 + margin.top + margin.bottom)
+    	.append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	pizzaToppings.selectAll(".pizzaToppings")
+	var pizzaTopping = pizzaToppings.selectAll(".pizzaToppings")
 		.data(typeDataTopping)
-		.enter().append("div")
-		.attr("class", "pizzaToppings")
-
-	d3.selectAll(".pizzaToppings")
+		.enter()
+	/*
+	pizzaTopping
 		.append("text")
 		.attr("class", "pizzaToppingText")
-		.text(function(d) { return d.label; })
+		.text(function(d) { return d.label; });
 
-	d3.selectAll(".pizzaToppings")
+	pizzaTopping
 		.append("text")
 		.attr("class", "pizzaToppingValue")
-		.text(function(d) { return d.value; })
+		.text(function(d) { return d.value; });
+	*/
+	pizzaToppings.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + 200 + ")")
+      .call(xtAxis);
 
-	d3.selectAll(".pizzaToppings")
-		.append("div")
+	pizzaTopping.append("rect")
 		.attr("class", "pizzaTopping")
-		.style({
-			"height": "5px",
-			"width": function(d) { return xTpp(d.value) - 6 + "px"; }
-		})
+		.attr("width", 5)
+		.attr("x", function(d, i) { return i * typeDataTopping.length; })
+		.attr("y", function(d) { return 200 - yTpp(d.value); })
+		.attr("height", function(d) { return yTpp(d.value); })
+		.attr("fill", "#F80404")
 		.on("mouseover", function(d) { highlight(d.label); })
-		.on("mouseout", function(d) { highlight(null); })
+		.on("mouseout", function(d) { highlight(null); });
 
 	function highlight(ingredient) {
 		if (ingredient == null) d3.select("#comp").selectAll("label").classed("selected", false);

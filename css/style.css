@@ -269,3 +269,10 @@ label.selected {
 	stroke-linecap: round;
 	vector-effect: non-scaling-stroke;
 }
+
+/* UI */
+.bottom {
+	position: fixed;
+    bottom: 0;
+    padding: 2em 0;
+}
