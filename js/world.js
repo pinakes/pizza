@@ -22,8 +22,8 @@ function world(worldMap, pizzaData, tooltip) {
 	var mapHeight = 450;
 
 	var projection = d3.geo.mercator()
-	    .scale(250)
-	    .translate([mapWidth / 1.6, mapHeight / 1.5])
+	    .scale(300)
+	    .translate([mapWidth / 1.5, mapHeight / 1.1])
 	    .precision(.5);
 
 	var map = d3.select("#location")
@@ -59,7 +59,7 @@ function world(worldMap, pizzaData, tooltip) {
         	tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-        	tooltip.html(d.label + "<br/><hr><i>" + d.value + "</i>")
+        	tooltip.html(d.label + "<br/><hr><i>" + d.value + plural(d.value) + "</i>")
                .style({
                		"min-width": "120px",
 	               	"left": (d3.event.pageX) + "px",
@@ -70,7 +70,16 @@ function world(worldMap, pizzaData, tooltip) {
          	tooltip.transition()
                .duration(500)
                .style("opacity", 0);
-      	});
+      	})
+
+    g.selectAll(".mark")
+	    .data(typeDataCity)
+	    .enter()
+    	.append("circle")
+    	.attr("r", 2)
+    	.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
+    	.attr("class", "pizzaPinCenter")
+
 
     /*
 	g.selectAll(".numbers")

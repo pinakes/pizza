@@ -4,7 +4,7 @@ function fullgraph(data, tooltip) {
 		.key(function(d) { return d3.time.month(d.date); })
 		.entries(data);
 
-	yTml.domain([0, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+	yTml.domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 	xTml.domain([new Date(2015, 9, 1), new Date(2016, 10, 15)])
 
 	var timeline = d3.select("#timeline")
@@ -48,14 +48,14 @@ function fullgraph(data, tooltip) {
 		.attr("cy", function(d) { return yTml(d.values.length); })
 		.on("mouseover", function(d) {
 			var content = d.values.reduce(function(content, v) {
-				content += "<h5>" + v.name + " <small>" + v.city + "</small></h5><i>" + v.type + " / " + v.vote + " stars</i><br/><br/>"
+				content += "<h4><small>" + v.name + " - " + v.city + "</small></h4><i>" + v.type + " / " + v.vote + " stars</i><br/><br/>"
 				return content
 			}, "");
 
         	tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-        	tooltip.html("<h2>"+ d.values.length +" Pizzas</h2>" + content)
+        	tooltip.html("<h4>"+ d.values.length + plural(d.values.length) +"</h4><hr>" + content)
                .style({
                		"min-width": "120px",
 	               	"left": (d3.event.pageX + 20) + "px",
