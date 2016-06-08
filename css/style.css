@@ -1,6 +1,7 @@
 /*General*/
 body {
-	font-family: Garamond, Georgia, serif;
+	font-family: 'Droid Serif', Garamond, Georgia, serif;
+	font-size: 15px;
 	background: #FFFFF7;
 }
 
@@ -55,6 +56,7 @@ h3 {
 	text-transform: lowercase;
 	font-size: 16px;
 }
+h4 { margin: .2em 0; }
 h5 { margin: 0; }
 a:hover, a:visited {
 	color: #C05E3C;
@@ -97,8 +99,8 @@ hr {
 	float: right;
 	width: 90%; 
 }
-
 .light { font-weight: 300; }
+span.light { color: rgba(1,1,1,.3) }
 
 svg text, .chart {
 	/*font-family: Menlo, monospace;*/
@@ -128,7 +130,7 @@ svg text, .chart {
 	right: 10px;
 }
 .pizzaType, .pizzaPlace, 
-.pizzaHow, .pizzaWhen, .pizzaTopping {
+.pizzaHow, .pizzaWhen {
 	padding-right: 0.5em;
 	background-color: #F80404;
 	margin-bottom: -1px;
@@ -137,9 +139,12 @@ svg text, .chart {
 	pointer-events: none;
 	color: #fff;
 }
-.pizzaType:hover, .pizzaPlace:hover, .pizzaHow:hover {
+.pizzaTopping {
+	fill: #DDCEA0;
+}
+.pizzaTopping:hover, .pizzaTopping.selected {
 	cursor: pointer;
-	background-color: #FF9393;
+	fill: #F80404;
 }
 #how {
 	margin-bottom: 4em;
@@ -163,14 +168,18 @@ svg text, .chart {
     r: 5;
 }
 .pizzaPin {
-	fill: rgba(248,4,4,.1);
-	stroke: #F80404;
+	fill: rgba(248,4,4,.2);
+	stroke: rgba(248,4,4,.2);
 	/*stroke: #F1D622;*/
 	stroke-width: 1.5;
 }
+.pizzaPinCenter {
+	fill: rgba(248,4,4,1);
+	pointer-events: none;
+}
 .pizzaPin:hover {
 	cursor: pointer;
-	fill: rgba(248,4,4,.25);
+	fill: rgba(248,4,4,.7);
 	stroke: #F80404;
 }
 .pizza:hover {
@@ -207,6 +216,23 @@ svg text, .chart {
 .tooltip hr {
 	border-bottom: 1px solid white;
 }
+
+/* pies */
+.phantom-arc:hover path {
+	fill-opacity: .5;
+	cursor: pointer;
+}
+
+polyline{
+	stroke: #F80404;
+	stroke-width: 1;
+	fill: none;
+}
+
+/* ingredients */
+.mainIngredients {
+	margin-bottom: 4em;
+}
 .mainIngredients.row .col img {
     width: 40%;
     float: left;
@@ -226,19 +252,38 @@ svg text, .chart {
     margin: 0;
     line-height: 42px;
 }
-
-/* pies */
-.phantom-arc:hover path {
-	fill-opacity: .5;
+.chart#comp {
+	padding: 0.5em 0;
+	height: 300px;
+    overflow: scroll;
+    border-top: 1px solid #ddcea0;
+    border-bottom: 1px solid #ddcea0;
+}
+.comp {
+	padding: 5px 0 3px 0;
+	border-bottom: 1px solid #F7EDD0;
+}
+.comp:hover {
+	background-color: #FFF8E4;
+}
+label {
+	line-height: 14px;
+    background: rgba(2,2,2,.15);
+    padding: 0.2em 0.8em;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    margin-right: 0.2em;
+    margin-bottom: 0.2em;
+    display: inline-flex;
+}
+label.selected {
+	background: red;
+}
+label:hover {
 	cursor: pointer;
+	background: red;
 }
-
-polyline{
-	stroke: #F80404;
-	stroke-width: 1;
-	fill: none;
-}
-
 /* map */
 .boundary {
 	fill: none;
@@ -246,4 +291,8 @@ polyline{
 	stroke-linejoin: round;
 	stroke-linecap: round;
 	vector-effect: non-scaling-stroke;
+}
+
+footer {
+	margin: 4em 0 1em 0;
 }
