@@ -65,14 +65,14 @@ function ingredients(data, tooltip) {
 	yTpp.domain([0, d3.max(typeDataTopping, function(d) { return d.value; })]);	
 
 	var pizzaToppings = d3.select("#topping")
-		/*.style({
-			"height": thirdWidth + margin.left + margin.right + "px"
-			"width": typeDataTopping.length + "px"
-		})*/
-		.attr("width", width + margin.left + margin.right)
+		.attr("width", width + margin.left + margin.left)
     	.attr("height", heightBars + margin.top + margin.bottom)
+
+	var bar = pizzaToppings.selectAll("g")
+		.data(typeDataTopping.sort(function(a, b) { return b.value - a.value; }))
+		.enter()
     	.append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	    .attr("transform", "translate(0," + margin.top + ")");
 	/*
 	pizzaTopping
 		.append("text")
@@ -84,20 +84,15 @@ function ingredients(data, tooltip) {
 		.attr("class", "pizzaToppingValue")
 		.text(function(d) { return d.value; });
 	*/
-	pizzaToppings.append("g")
+	bar.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + heightBars + ")")
       .call(xtAxis);
 
-    pizzaToppings.append("g")
-      .attr("class", "y axis")
-      .call(ytAxis)
 
-	pizzaToppings.selectAll("pizzaTopping")
-		.data(typeDataTopping)
-		.enter().append("rect")
+	bar.append("rect")
 		.attr("class", function(d){ return "pizzaTopping " + d.label.split(" ").join("-") })
-		.attr("x", function(d, i) { return i * (width / typeDataTopping.length); })
+		.attr("x", function(d, i) { return i * ((width + margin.left) / typeDataTopping.length); })
      	.attr("width", width / typeDataTopping.length - 2)
 		.attr("y", function(d) { return yTpp(d.value); })
 		.attr("height", function(d) { return heightBars - yTpp(d.value); })
@@ -107,11 +102,11 @@ function ingredients(data, tooltip) {
 			tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-        	tooltip.html(d.label + "<br/><hr><i>" + d.value + plural(d.value) + "</i>")
+        	tooltip.html(d.label)
                .style({
-               		"min-width": "120px",
+               		
 	               	"left": (d3.event.pageX) + "px",
-	               	"top": (d3.event.pageY - 80) + "px"
+	               	"top": (d3.event.pageY - 40) + "px"
                })
 		})
 		.on("mouseout", function(d) { 
@@ -121,13 +116,12 @@ function ingredients(data, tooltip) {
                .style("opacity", 0);
 		});
 
-	pizzaToppings.selectAll("text")
-		.data(typeDataTopping)
-		.enter().append("text")
-		.text(function(d) { return d.value; })
+	bar.append("text")
+		.text(function(d) { console.log(d); return d.value; })
+		.attr("class", "barText")
 		.attr("text-anchor", "middle")
 		.attr("fill", "#fff")
-		.attr("x", function(d, i) { return i * (width / typeDataTopping.length) + (width / typeDataTopping.length - 2 ) / 2; })
+		.attr("x", function(d, i) { return i * ((width + margin.left) / typeDataTopping.length) + (width / typeDataTopping.length - 2 ) / 2; })
 		.attr("y", function(d) { return heightBars - (d.value * 20) + 14; });
 
 	function highlight(ingredient) {
