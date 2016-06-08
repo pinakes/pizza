@@ -292,3 +292,7 @@ label:hover {
 	stroke-linecap: round;
 	vector-effect: non-scaling-stroke;
 }
+
+footer {
+	margin: 4em 0 1em 0;
+}
