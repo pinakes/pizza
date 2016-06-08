@@ -51,7 +51,7 @@ var xWhn = d3.scale.linear()
     .range([0, thirdWidth]);
 
 var xTpp = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
+    .rangeRoundBands([0, width + 20], .1);
 
 var yTpp = d3.scale.linear()
     .range([heightBars, 0]);

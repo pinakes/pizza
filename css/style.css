@@ -204,6 +204,10 @@ svg text, .chart {
 	stroke-dasharray: 2,4;
 	z-index: -1;
 }
+.barText {
+	pointer-events: none;
+}
+
 .tooltip {
 	font-size: 0.8em;
 	border-radius: 0.3em;
