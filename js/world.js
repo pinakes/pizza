@@ -24,14 +24,12 @@ function world(worldMap, pizzaData, tooltip) {
 
 	// world map
 	var mapWidth = 960,
-		mapHeight = 650, 
-		widgetWidth = 330,
-		widgetHeight = 330
+		mapHeight = 450
 
 
 	var projection = d3.geo.mercator()
 	    .scale(250)
-	    .translate([mapWidth / 2, mapHeight / 1.5])
+	    .translate([mapWidth / 1.5, mapHeight / 1.3])
 	    .precision(.5);
 
 	var zoom = d3.behavior.zoom()
@@ -111,12 +109,6 @@ function world(worldMap, pizzaData, tooltip) {
 			.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
 			.attr('r', 2)
 	}
-
-	var widget = d3.select("#widget")
-		.attr("width", widgetWidth)
-		.attr("height", widgetHeight);
-
-	console.log(typeDataCity)
 
 
     function nycLongi(longi){
