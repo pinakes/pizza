@@ -13,18 +13,32 @@ function world(worldMap, pizzaData, tooltip) {
 	var typeDataCity = [];
 
 	for (var city in indexedByCity) {
-	  typeDataCity.push({label: city, value: indexedByCity[city].value, longi: indexedByCity[city].longi, lat: indexedByCity[city].lat});
+		typeDataCity.push({
+			label: city, 
+			value: indexedByCity[city].value, 
+			longi: indexedByCity[city].longi, 
+			lat: indexedByCity[city].lat
+		});
 	}
 	//console.log(typeDataCity)
 
 	// world map
-	var mapWidth = 960;
-	var mapHeight = 450;
+	var mapWidth = 960,
+		mapHeight = 650, 
+		widgetWidth = 330,
+		widgetHeight = 330
+
 
 	var projection = d3.geo.mercator()
-	    .scale(300)
-	    .translate([mapWidth / 1.5, mapHeight / 1.1])
+	    .scale(250)
+	    .translate([mapWidth / 2, mapHeight / 1.5])
 	    .precision(.5);
+
+	var zoom = d3.behavior.zoom()
+	    .translate(projection.translate())
+	    .scale(projection.scale())
+	    .scaleExtent([100, 2000])
+	    .on("zoom", zoomed);
 
 	var map = d3.select("#location")
 	  .attr("width", mapWidth)
@@ -33,7 +47,14 @@ function world(worldMap, pizzaData, tooltip) {
 	var path = d3.geo.path()
 	  .projection(projection);
 
-	var g = map.append("g");
+	var g = map.append("g")
+		.call(zoom);
+
+	g.append("rect")
+	    .attr("class", "background")
+	    .attr("width", mapWidth)
+	    .attr("height", mapHeight)
+	    .attr("fill", "#FFFFF7")
 
 	g.selectAll("path")
 		.data(topojson.object(worldMap, worldMap.objects.countries).geometries)
@@ -80,7 +101,48 @@ function world(worldMap, pizzaData, tooltip) {
     	.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
     	.attr("class", "pizzaPinCenter")
 
+    function zoomed() {
+		projection.translate(d3.event.translate).scale(d3.event.scale);
+		g.selectAll("path").attr("d", path)
+		g.selectAll(".pizzaPin")
+			.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
+			.attr('r', function(d) { return 5 + d.value / 1.8})
+		g.selectAll(".pizzaPinCenter")
+			.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
+			.attr('r', 2)
+	}
 
+	var widget = d3.select("#widget")
+		.attr("width", widgetWidth)
+		.attr("height", widgetHeight);
+
+	console.log(typeDataCity)
+
+
+    function nycLongi(longi){
+    	console.log(longi)
+    	var newLongi
+    	if (longi <= 73.5 && longi >= 74.1) {
+    		newLongi = 74;
+    		console.log(newLongi)
+    		return newLongi;
+    	} else {
+    		console.log(longi)
+    		return longi;
+    	}
+    }
+    function nycLat(lat){
+    	console.log(lat)
+    	var newLat
+    	if (lat <= 41 && lat >= 40.5) {		
+		    newLat = 40; 
+		    console.log(newLat)
+    		return newLat;
+    	} else {
+    		console.log(lat)
+    		return lat;
+    	}
+    }
     /*
 	g.selectAll(".numbers")
 		.data(typeDataCity)

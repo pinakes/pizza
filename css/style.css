@@ -296,6 +296,16 @@ label:hover {
 	stroke-linecap: round;
 	vector-effect: non-scaling-stroke;
 }
+section.location {
+	position: relative;
+}
+#widget {
+	position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: #FFFFF7;
+    border: 1px solid #ddcea0;
+}
 
 footer {
 	margin: 4em 0 1em 0;
