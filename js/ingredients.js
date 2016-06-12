@@ -14,10 +14,10 @@ function ingredients(data, tooltip) {
 		.enter().append("div")
 		.attr("class", "comp row")
 		.html(function(d){
-			return "<div class='col four'>"+ d.name +" - <span class='light'>"+ d.city +"</div>"
+			return "<div class='col two'>"+ d.name +" - <span class='light'>"+ d.city +"</div>"
 		})
 			.append("div")
-			.attr("class", "col five")
+			.attr("class", "col two")
 			.html(function(d) { 
 				var content = d.topping.reduce(function(content, v) {
 					content += "<label class='"+ v.split(" ").join("-") +"'>" + v + "</label>"
@@ -73,17 +73,7 @@ function ingredients(data, tooltip) {
 		.enter()
     	.append("g")
 	    .attr("transform", "translate(0," + margin.top + ")");
-	/*
-	pizzaTopping
-		.append("text")
-		.attr("class", "pizzaToppingText")
-		.text(function(d) { return d.label; });
-
-	pizzaTopping
-		.append("text")
-		.attr("class", "pizzaToppingValue")
-		.text(function(d) { return d.value; });
-	*/
+	
 	bar.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + heightBars + ")")
@@ -117,7 +107,7 @@ function ingredients(data, tooltip) {
 		});
 
 	bar.append("text")
-		.text(function(d) { console.log(d); return d.value; })
+		.text(function(d) { return d.value; })
 		.attr("class", "barText")
 		.attr("text-anchor", "middle")
 		.attr("fill", "#fff")

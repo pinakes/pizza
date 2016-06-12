@@ -115,6 +115,12 @@ function sheetLoaded(data) {
         world(topology, data, tooltip);
     });
 
+    /*
+    d3.json("map/nyc_map.json", function(error, topology) {
+        nyc(topology, data, tooltip);
+    });
+    */
+
     // how
     //how(data, tooltip);
 }
