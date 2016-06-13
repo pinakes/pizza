@@ -52,7 +52,7 @@ function world(worldMap, pizzaData, tooltip) {
 	    .attr("class", "background")
 	    .attr("width", mapWidth)
 	    .attr("height", mapHeight)
-	    .attr("fill", "#FFFFF7")
+	    .attr("fill", "url(#sea-pattern)")
 
 	g.selectAll("path")
 		.data(topojson.object(worldMap, worldMap.objects.countries).geometries)
