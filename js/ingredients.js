@@ -4,9 +4,10 @@ function ingredients(data, tooltip) {
 	var comp = []
 
 	data.forEach(function(d){
-		comp.push({"topping":d.topping.split(", "), "name":d.name, "city":d.city})
+		comp.push({"topping":d.topping.split(", "), "name":d.name, "city":d.city, "date":d.date})
 	})
 
+	var shortDate = d3.time.format("%d %b %y, %a"); 
 	var pizzaCompos = d3.select("#comp")
 
 	pizzaCompos.selectAll(".comp")
@@ -14,7 +15,7 @@ function ingredients(data, tooltip) {
 		.enter().append("div")
 		.attr("class", "comp row")
 		.html(function(d){
-			return "<div class='col two'>"+ d.name +" - <span class='light'>"+ d.city +"</div>"
+			return "<div class='col two'><span class='light'>"+ shortDate(d.date) +"</span> - "+ d.name +" - <i>"+ d.city +"</i></div>"
 		})
 			.append("div")
 			.attr("class", "col two")
