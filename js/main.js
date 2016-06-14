@@ -5,7 +5,7 @@ var key = "1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ",  // key for demo sprea
     csvUrl = "https://spreadsheets.google.com/tq?key=" + key + query;  // CORS-enabled server
 */
 // Timeline
-var margin = {top: 50, right: 0, bottom: 50, left: 20},
+var margin = {top: 50, right: 0, bottom: 50, left: 0},
     width = 960 - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom;
     heightBars = 260 - margin.top - margin.bottom;

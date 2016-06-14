@@ -20,7 +20,7 @@ function world(worldMap, pizzaData, tooltip) {
 			lat: indexedByCity[city].lat
 		});
 	}
-	//console.log(typeDataCity)
+	console.log(typeDataCity)
 
 	// world map
 	var mapWidth = 960,
