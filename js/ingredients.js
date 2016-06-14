@@ -1,10 +1,10 @@
 function ingredients(data, tooltip) {
 	
 	// Topping aggregated per pizza
-	var comp = []
+	var comp = [] 
 
 	data.forEach(function(d){
-		comp.push({"topping":d.topping.split(", "), "name":d.name, "city":d.city, "date":d.date})
+		comp.push({"topping":d.topping.split(", "), "name":d.name, "city":d.city, "date":d.date, "vote":d.vote})
 	})
 
 	var shortDate = d3.time.format("%d %b %y, %a"); 
@@ -80,7 +80,6 @@ function ingredients(data, tooltip) {
       .attr("transform", "translate(0," + heightBars + ")")
       .call(xtAxis);
 
-
 	bar.append("rect")
 		.attr("class", function(d){ return "pizzaTopping " + d.label.split(" ").join("-") })
 		.attr("x", function(d, i) { return i * ((width + margin.left) / typeDataTopping.length); })
@@ -122,5 +121,12 @@ function ingredients(data, tooltip) {
 		else {
 			d3.select("#comp").selectAll("label." + ingredient.split(" ").join("-")).classed("selected", true);
 		}
+	}
+
+	//stupid function I know
+	function ratings(number) {
+		var stars = number.toString();
+
+		stars.replace(".", "-");
 	}
 }
