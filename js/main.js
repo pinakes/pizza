@@ -6,7 +6,8 @@ var key = "1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ",  // key for demo sprea
 */
 // Timeline
 var margin = {top: 50, right: 0, bottom: 50, left: 0},
-    width = 960 - margin.left - margin.right,
+    width = parseInt(d3.select('.timeline').style('width'), 10),
+    width = width - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom;
     heightBars = 260 - margin.top - margin.bottom;
 
@@ -20,7 +21,7 @@ var xTml = d3.time.scale()
 var xAxis = d3.svg.axis()
     .scale(xTml)
     .orient("bottom")
-    .ticks(12)
+    .ticks(mobileTicks(width))
     .tickSize(2, 0)
 
 var yAxis = d3.svg.axis()
@@ -35,8 +36,8 @@ function customAxis(g) {
 }
 
 // Type
-var halfWidth = 440
-var thirdWidth = 310
+var halfWidth = parseInt(d3.select('.howAndWhen').style('width'), 10)
+var thirdWidth = parseInt(d3.select('.howAndWhen').style('width'), 10)
 
 var xTyp = d3.scale.linear()
     .range([0, thirdWidth]);
@@ -68,6 +69,10 @@ var ytAxis = d3.svg.axis()
 function plural(value){
     if(value <= 1){ return " Pizza" }
     else { return " Pizzas" }
+}
+
+function mobileTicks(width) {
+    if (width < 959) { return 6; } else { return 12; }
 }
 
 function sheetLoaded(data) {
