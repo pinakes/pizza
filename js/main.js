@@ -101,7 +101,7 @@ function sheetLoaded(data) {
         .style("opacity", 0);
 
     //Pizza Counter
-    d3.select(".totPizza").text(data.length)
+    d3.select(".totPizza").text(data.length);
 
     // Full Graph
     fullgraph(data, tooltip);
