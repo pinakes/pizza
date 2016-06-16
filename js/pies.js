@@ -113,11 +113,11 @@ function pies(data, tooltip) {
 		.sort(null)
 	    .value(function(d) { return d.value; });
 
-	var w = 636;
-	var h = 310;
-	var center = 636 / 2;
+	var w = parseInt(d3.select('.type').style('width'), 10);
+	var h = w / 2;
+	var center = w / 2;
 	var radius = Math.min(w, h) / 2;
-	var outerRadius = 100;
+	var outerRadius = w / 6;
 	var innerRadius = 0;
 
 	var key = function(d){ return d.data.label; };
@@ -133,14 +133,14 @@ function pies(data, tooltip) {
 			.append("pattern")
 			.attr("id", "bg")
 			.attr('patternUnits', 'userSpaceOnUse')
-	        .attr('width', 124)
-	        .attr('height', 124)
+	        .attr('width', w / 5)
+	        .attr('height', w / 5)
 	        .attr('x', 60)
 			.attr('y', 0)
 			.append("image")
 				.attr("xlink:href", "images/pizzaPattern.jpg")
-				.attr('width', 125)
-		        .attr('height', 125)
+				.attr('width', w / 5 + 1)
+		        .attr('height', w / 5 + 1)
 		        .attr('x', 0)
 				.attr('y', 0);
 
@@ -223,7 +223,7 @@ function pies(data, tooltip) {
 	text.enter()
 		.append("text")
 		.attr("dy", ".35em")
-		.style("font-size", "14px")
+		.attr("class", "pieLegend")
 		.text(function(d) {
 			return d.data.value + " - " + d.data.label;
 		});
@@ -273,7 +273,7 @@ function pies(data, tooltip) {
 			return function(t) {
 				var d2 = interpolate(t);
 				var pos = outerArc.centroid(d2);
-				pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+				pos[0] = radius * 0.90 * (midAngle(d2) < Math.PI ? 1 : -1);
 				return [innerArc.centroid(d2), outerArc.centroid(d2), pos];
 			};			
 		});

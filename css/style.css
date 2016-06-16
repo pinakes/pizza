@@ -74,13 +74,6 @@ hr {
 	display: inline-block;
 	width: 100%;
 }
-.row .col {
-	float: left;
-}
-.row .col.two { width: 50%; }
-.row .col.three { width: 33.33333333%; }
-.row .col.four { width: 25%; }
-.row .col.five { width: 66.66666666%; }
 .hero {
 	display: inline-block;
 	padding: 8em 0;
@@ -106,9 +99,96 @@ svg text, .chart {
 	/*font-family: Menlo, monospace;*/
 	font-size: 12px;
 }
-.container {
-	width: 960px;
-	margin: 0 auto;
+@media (max-width: 767px) { 
+	.container {
+		width: 100%;
+		margin: 0 auto;
+	}
+	.row .col {
+		clear: both;
+	}
+	.row .col.two { width: 100%; }
+	.row .col.three { width: 100%; }
+	.row .col.four { width: 100%; }
+	.row .col.five { width: 100%; }
+
+	.pieLegend { font-size: 12px; }
+
+	#type { margin: 20px 0 50px 0; }
+
+	.mainIngredients .col { padding-bottom: 2em; }
+	.mainIngredients .col > div { padding-top: 2em; margin-left: 32px;}
+
+	.mainIngredients .col img { width: 32%; }
+
+	.titolo, .compo	{
+		width: 100%;
+		clear: both;
+	}
+	.titolo h1 {
+	    line-height: 1em;
+	    margin-bottom: 1em;
+	}
+	.barText {
+		display: none;
+	}
+	#comp label { margin-top: 0.8em; }
+}
+@media (min-width: 768px) and (max-width: 959px) {
+	.container {
+		width: 100%;
+		margin: 0 auto;
+	}
+	.row .col.two { width: 50%; float: left; }
+	.row .col.three { width: 40%; float: left; }
+	.row .col.four { width: 50%; float: left;}
+	.row .col.five { width: 60%; float: left; }
+
+	.mainIngredients .col { padding-bottom: 2em; }
+	.mainIngredients .col > div { padding-top: 2em; margin-left: 32px;}
+
+	.mainIngredients .col img { width: 40%; }
+
+	.titolo h1 {
+	    line-height: 1em;
+	    margin-bottom: 0.2em;
+	}
+}
+@media (min-width: 960px) { 
+	.container {
+		width: 960px;
+		margin: 0 auto;
+	}
+	.row .col {
+		float: left;
+	}
+	.row .col.two { width: 50%; }
+	.row .col.three { width: 33.33333333%; }
+	.row .col.four { width: 25%; }
+	.row .col.five { width: 66.66666666%; }
+
+	.pieLegend { font-size: 14px; }
+
+	#type { margin-bottom: 0; }
+
+	.mainIngredients .col { padding-bottom: 0; }
+	.mainIngredients .col > div { padding-top: 0; margin-left: 12px;}
+
+	.mainIngredients .col img { width: 40%; }
+
+	.titolo, .compo	{
+		width: 50%;
+		float: left;
+	}
+
+	.titolo h1 {
+	    line-height: 1em;
+	    margin-bottom: 0em;
+	}
+	.barText {
+		display: block;
+	}
+	#comp label { margin-top: 0; }
 }
 .popular p {
 	padding-right: 35px;
@@ -238,7 +318,6 @@ polyline{
 	margin-bottom: 4em;
 }
 .mainIngredients.row .col img {
-    width: 40%;
     float: left;
 }
 .mainIngredients.row .col h5 {
@@ -247,7 +326,6 @@ polyline{
 }
 .mainIngredients.row .col div {
 	float: left;
-    margin-left: 12px;
 }
 .mainIngredients.row .col p {
 	margin: 0

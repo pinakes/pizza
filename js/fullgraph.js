@@ -66,5 +66,10 @@ function fullgraph(data, tooltip) {
          	tooltip.transition()
                .duration(500)
                .style("opacity", 0);
+      	})
+      	.on("click", function(d) {
+         	tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
       	});
 }

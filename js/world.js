@@ -20,15 +20,15 @@ function world(worldMap, pizzaData, tooltip) {
 			lat: indexedByCity[city].lat
 		});
 	}
-	//console.log(typeDataCity)
+	console.log(typeDataCity)
 
 	// world map
-	var mapWidth = 960,
+	var mapWidth = width,
 		mapHeight = 450
 
 
 	var projection = d3.geo.mercator()
-	    .scale(250)
+	    .scale(mobileMap(width))
 	    .translate([mapWidth / 1.5, mapHeight / 1.3])
 	    .precision(.5);
 
@@ -52,7 +52,7 @@ function world(worldMap, pizzaData, tooltip) {
 	    .attr("class", "background")
 	    .attr("width", mapWidth)
 	    .attr("height", mapHeight)
-	    .attr("fill", "#FFFFF7")
+	    .attr("fill", "url(#sea-pattern)")
 
 	g.selectAll("path")
 		.data(topojson.object(worldMap, worldMap.objects.countries).geometries)
@@ -134,6 +134,10 @@ function world(worldMap, pizzaData, tooltip) {
     		console.log(lat)
     		return lat;
     	}
+    }
+
+    function mobileMap(width) {
+    	if (width < 960 ) { return 150 } else { return 250 }
     }
     /*
 	g.selectAll(".numbers")

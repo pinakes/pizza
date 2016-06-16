@@ -3,12 +3,30 @@
 	<head>
 		<title>A Year of Pizza</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
 		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+		<!-- Facebook -->
+		<meta property="og:url" content="http://francescofraioli.it/pizza">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="A Year of Pizza">
+		<meta property="og:image" content="http://www.francescofraioli.it/pizza/images/fb-pic.png">
+		<meta property="og:description" content="Data visualization project about pizza">
+		<meta property="og:site_name" content="Francesco Fraioli">
+		<meta property="og:locale" content="en_US">
+		<meta property="article:author" content="Francesco Fraioli">
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@pinakes">
+		<meta name="twitter:creator" content="@pinakes">
+		<meta name="twitter:title" content="A Year of Pizza">
+		<meta name="twitter:description" content="Data visualization project about pizza">
+		<meta name="twitter:image" content="http://www.francescofraioli.it/pizza/images/tw-pic.png">
 	</head>
 	<body>
 		<div class="container">
@@ -32,11 +50,11 @@
 			<svg id="timeline" class="chart"></svg>
 						
 			<div class="row">
-				<div class="col five">
+				<div class="col five type">
 					<h5>Type</h5>
 					<svg id="type" class="chart"></svg>
 				</div>
-				<div class="col three">
+				<div class="col three howAndWhen">
 					<h5>How</h5>
 					<div id="how" class="chart"></div>
 					<h5>When</h5>
@@ -97,11 +115,17 @@
 
 			<section class="location" style="border-bottom: 1px solid #DDCEA0;">
 				<h3 style="margin-bottom: 3px">Locations</h3>
-				<svg id="location" class="chart"></svg>
+				<svg id="location" class="chart">
+					<defs>
+				    <pattern id="sea-pattern" x="0" y="0" patternUnits="userSpaceOnUse" height="24" width="35">
+				      <image x="0" height="24" width="35" y="0" xlink:href="images/sea.png"></image>
+				    </pattern>
+				  </defs>
+				</svg>
 			</section>
 			
 			<footer>
-				<p><small>Made in Brooklyn by <a href="/">Francesco Fraioli</a> - code available on <a href="https://github.com/pinakes/33">github</a></small></p>
+				<p><small>Made in Brooklyn by <a href="/">Francesco Fraioli</a> - code available on <a href="https://github.com/pinakes/pizza" target="_blank">github</a></small></p>
 			</footer>
 		</div>
 
