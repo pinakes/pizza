@@ -63,7 +63,9 @@ function ingredients(data, tooltip) {
 	}
 
     xTpp.domain(data.map(function(d) { return d.label; }));
-	yTpp.domain([0, d3.max(typeDataTopping, function(d) { return d.value; })]);	
+	yTpp.domain([0, d3.max(typeDataTopping, function(d) { return d.value ; })]);	
+
+	console.log(d3.max(typeDataTopping, function(d){ return d.value; }))
 
 	var pizzaToppings = d3.select("#topping")
 		.attr("width", width + margin.left + margin.left)
@@ -112,7 +114,7 @@ function ingredients(data, tooltip) {
 		.attr("text-anchor", "middle")
 		.attr("fill", "#fff")
 		.attr("x", function(d, i) { return i * ((width + margin.left) / typeDataTopping.length) + (width / typeDataTopping.length - 2 ) / 2; })
-		.attr("y", function(d) { return heightBars - (d.value * 20) + 14; });
+		.attr("y", function(d) { return yTpp(d.value) + 14; });
 
 	function highlight(ingredient) {
 		if (ingredient == null){
