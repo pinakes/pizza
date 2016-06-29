@@ -10,3 +10,4 @@ The web page pulls information from a [spreadsheet](https://docs.google.com/spre
 Thanks to:
 - d3.js library
 - David Buezas’s Block [9306799](http://bl.ocks.org/dbuezas/9306799)
+- [Giovanni Cappellotto](https://github.com/potomak)
