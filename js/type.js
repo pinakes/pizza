@@ -92,6 +92,7 @@ function type(data, tooltip) {
 			"width": function(d) { return xTyp(d.value) - 6 + "px"; }
 		})
 
+
 	var pizzaPlaces = d3.select("#place")
 		.style({
 			"width": thirdWidth + margin.left + margin.right + "px",

@@ -4,8 +4,12 @@ function fullgraph(data, tooltip) {
 		.key(function(d) { return d3.time.month(d.date); })
 		.entries(data);
 
+	var formatMonth = d3.time.format("%B");
+
 	yTml.domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-	xTml.domain([new Date(2015, 9, 1), new Date(2016, 10, 15)])
+	xTml.domain([new Date(2015, 9, 1), new Date(2018, 3, 15)])
+
+	console.log("ciao")
 
 	var timeline = d3.select("#timeline")
 		.attr("width", width + margin.left + margin.right)
@@ -48,14 +52,14 @@ function fullgraph(data, tooltip) {
 		.attr("cy", function(d) { return yTml(d.values.length); })
 		.on("mouseover", function(d) {
 			var content = d.values.reduce(function(content, v) {
-				content += "<h4><small>" + v.name + " - " + v.city + "</small></h4><i>" + v.type + " / " + v.vote + " stars</i><br/><br/>"
+				content += "<h4><small>"+ v.name +" - "+ v.city +"</small></h4><i>"+ v.type +" / "+ v.vote +" stars</i><br/><br/>"
 				return content
 			}, "");
 
         	tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-        	tooltip.html("<h4>"+ d.values.length + plural(d.values.length) +"</h4><hr>" + content)
+        	tooltip.html("<h4>"+ d.values.length + plural(d.values.length) +" in "+ formatMonth(d.values[0].date) +"</h4><hr>"+ content)
                .style({
                		"min-width": "120px",
 	               	"left": (d3.event.pageX + 20) + "px",
