@@ -11,7 +11,7 @@ function ingredients(data, tooltip) {
 	var pizzaCompos = d3.select("#comp")
 
 	pizzaCompos.selectAll(".comp")
-		.data(comp)
+		.data(comp.reverse())
 		.enter().append("div")
 		.attr("class", "comp row")
 		.html(function(d){

@@ -58,7 +58,7 @@ h3 {
 }
 h4 { margin: .2em 0; }
 h5 { margin: 0; }
-a:hover, a:visited {
+a:link, a:hover, a:visited {
 	color: #C05E3C;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small { 
@@ -86,7 +86,14 @@ hr {
 	float: left;
 }
 .titolo {
+	position: relative;
 	margin: 1.5em 0;
+}
+.titolo h2 {
+	position: absolute;
+    top: -30px;
+    left: 92px;
+    color: #f80404;
 }
 .compo img { 
 	float: right;

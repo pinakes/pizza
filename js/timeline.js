@@ -1,7 +1,9 @@
 function timeline(data, tooltip) {
 
 	yTml.domain(data.map(function(d) { return d.type; }))
-	xTml.domain([new Date(2015, 10, 1), new Date(2016, 10, 15)])
+	xTml.domain([new Date(2015, 10, 1), new Date(2017, 10, 15)])
+
+	console.log("ciao")
 
 	var timeline = d3.select("#timeline")
 		.attr("width", width + margin.left + margin.right)
