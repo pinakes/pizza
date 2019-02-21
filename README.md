@@ -1,5 +1,5 @@
 # A YEAR OF PIZZA 
-## Data visualization project about pizza
+### Data visualization project about pizza
 
 Click [here](http://francescofraioli.it/pizza/) to see how many pizzas I'm eating in 2016.
 
