@@ -7,7 +7,7 @@ function fullgraph(data, tooltip) {
 	var formatMonth = d3.time.format("%B");
 
 	yTml.domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-	xTml.domain([new Date(2015, 9, 1), new Date(2018, 3, 15)])
+	xTml.domain([new Date(2015, 9, 1), new Date(2019, 11, 15)])
 
 	console.log("ciao")
 
