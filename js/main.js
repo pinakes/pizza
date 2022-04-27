@@ -1,9 +1,4 @@
 
-/* Settings
-var key = "1JL9GyvZk0Nkkku0mu92uOEDXm9X7sPLNjMJcshDCHZQ",  // key for demo spreadsheet
-    query = "&tqx=out:csv",                       // query returns the first sheet as CSV
-    csvUrl = "https://spreadsheets.google.com/tq?key=" + key + query;  // CORS-enabled server
-*/
 // Timeline
 var margin = {top: 50, right: 0, bottom: 50, left: 0},
     width = parseInt(d3.select('.timeline').style('width'), 10),
@@ -74,27 +69,11 @@ function plural(value){
 function mobileTicks(width) {
     if (width < 959) { return 6; } else { return 12; }
 }
-
-function sheetLoaded(data) {
-    data = data.feed.entry.map(function (entry) {
-        return {
-            date:       entry['gsx$date']['$t'],
-            name:       entry['gsx$name']['$t'],
-            vote:       entry['gsx$vote']['$t'],
-            type:       entry['gsx$type']['$t'],
-            city:       entry['gsx$city']['$t'],
-            lat:        entry['gsx$lat']['$t'],
-            longi:      entry['gsx$longi']['$t'],
-            topping:    entry['gsx$topping']['$t'],
-            when:       entry['gsx$when']['$t'],
-            withwho:    entry['gsx$withwho']['$t'],
-            how:        entry['gsx$how']['$t']
-        }
-    })
+d3.csv("https://raw.githubusercontent.com/pinakes/pizza/master/data/pizza-list.csv", function(data) {
     data.forEach(function(d) {
         d.date = parseDate(d.date);
     })
-    //console.log("data length: " + data.length)
+
     // add the tooltip area to the webpage
     var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -119,13 +98,4 @@ function sheetLoaded(data) {
     d3.json("map/world_map.json", function(error, topology) {
         world(topology, data, tooltip);
     });
-
-    /*
-    d3.json("map/nyc_map.json", function(error, topology) {
-        nyc(topology, data, tooltip);
-    });
-    */
-
-    // how
-    //how(data, tooltip);
-}
+});
