@@ -255,7 +255,7 @@ svg text, .chart {
     r: 5;
 }
 .pizzaPin {
-	fill: rgba(248,4,4,.2);
+	/*fill: rgba(248,4,4,.2);*/
 	stroke: rgba(248,4,4,.2);
 	/*stroke: #F1D622;*/
 	stroke-width: 1.5;

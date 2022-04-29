@@ -69,7 +69,7 @@ function plural(value){
 function mobileTicks(width) {
     if (width < 959) { return 6; } else { return 12; }
 }
-d3.csv("https://raw.githubusercontent.com/pinakes/pizza/master/data/pizza-list.csv", function(data) {
+d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRosEdBkrsXCTkaT5XJkdsRx6KbunoNcJgJx6m3-IdSNtcA05PZC7AjtUgyV0GPRBuL6HXVTvuVRo0r/pub?gid=0&single=true&output=csv", function(data) {
     data.forEach(function(d) {
         d.date = parseDate(d.date);
     })

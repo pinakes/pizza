@@ -72,8 +72,9 @@ function world(worldMap, pizzaData, tooltip) {
 	    .enter()
 	    .append("circle")
 	    .attr("class", "pizzaPin")
-	    .attr('r', function(d) { return 5 + d.value / 1.8})
-	    .attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
+	    .attr('r', function(d) { return 5 + d.value / 5.2})
+		.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
+		.attr("fill", function(d) { return "rgba(248,4,4," + d.value / 500 + ")";})
 	    .on("mouseover", function(d) {
         	tooltip.transition()
                .duration(200)
@@ -97,14 +98,14 @@ function world(worldMap, pizzaData, tooltip) {
     	.append("circle")
     	.attr("r", 2)
     	.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
-    	.attr("class", "pizzaPinCenter")
+		.attr("class", "pizzaPinCenter")
 
     function zoomed() {
 		projection.translate(d3.event.translate).scale(d3.event.scale);
 		g.selectAll("path").attr("d", path)
 		g.selectAll(".pizzaPin")
 			.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
-			.attr('r', function(d) { return 5 + d.value / 1.8})
+			.attr('r', function(d) { return 5 + d.value / 5.2})
 		g.selectAll(".pizzaPinCenter")
 			.attr("transform", function(d) { return "translate(" + projection([d.longi,d.lat]) + ")";})
 			.attr('r', 2)
